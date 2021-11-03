@@ -90,9 +90,9 @@ local function TeleportToPlayer(ply)
 	local pos = ply:get_position()
  
 	if not localplayer:is_in_vehicle() then
-		localplayer:set_position(pos)
+		-- localplayer:set_position(pos)
 	else
-		localplayer:get_current_vehicle():set_position(pos)
+		-- localplayer:get_current_vehicle():set_position(pos)
 	end
 end
  
@@ -108,7 +108,7 @@ local function TeleportVehiclesToPlayer(ply)
  
 	for veh in replayinterface.get_vehicles() do
 		if not currentvehicle or currentvehicle ~= veh then
-			veh:set_position(pos)
+			-- veh:set_position(pos)
 		end
 	end
 end
@@ -119,7 +119,7 @@ local function TeleportPedsToPlayer(ply)
 	local pos = ply:get_position()
 	for ped in replayinterface.get_peds() do
 		if IsNPC(ped) then
-			ped:set_position(pos)
+			-- ped:set_position(pos)
 		end
 	end
 end
@@ -138,7 +138,7 @@ local function ExplodePlayer(ply)
 		if not currentvehicle or currentvehicle ~= veh then
 			veh:set_rotation(vector3(0,0,180))
 			veh:set_health(-1)
-			veh:set_position(pos)
+			-- veh:set_position(pos)
 		end
 	end
 end
@@ -200,7 +200,7 @@ end
 menu.add_action("[P] Teleport me to player", function() TeleportToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 menu.add_action("[P] Teleport Vehicles to player", function() TeleportVehiclesToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 menu.add_action("[P] Teleport Peds to player", function() TeleportPedsToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
--- menu.add_action("Explode Player", function() ExplodePlayer(GetPlayerByArrayIndex(selectedplayer)) end)
+menu.add_action("Explode Player", function() ExplodePlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 local function hasConfigFlag(flag)
 	player = GetPlayerByArrayIndex(selectedplayer)
 	if player ~= nil then return player:get_config_flag(flag) end

@@ -335,7 +335,7 @@
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": 0.078431,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": true,
