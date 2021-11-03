@@ -1,0 +1,317 @@
+﻿Static1 > 1 / 12 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Game|➤
+Button2 > Player|➤
+Button3 > Vehicle|➤
+Button4 > Weapon|➤
+Button5 > World|➤
+Button6 > Teleport|➤
+Button7 > Tunables|➤
+Button8 > Unlocks|➤
+Button9 > Online Services|➤
+Button10 > Online Vehicle Spawn|➤
+Button11 > Online Protection|➤
+Button12 > Menu Settings|➤
+
+Static1 > 1 / 4 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Leave Online
+Button2 > Go To Creator
+Button3 > Choose Character
+Button4 > Online Session|◀Go▶
+
+Static1 > 1 / 20 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > God mode|✔
+Button2 > Waterproof|☐
+Button3 > Nightvision|☐
+Button4 > ⚠️ Thermal Vision|☐
+Button5 > Blackout|☐
+Button6 > Health Boost|◀Increased▶
+Button7 > Heal Player
+Button8 > Suicide
+Button9 > No Gravity|☐
+Button10 > No Ragdoll|✔
+Button11 > Seatbelt|✔
+Button12 > Everyone Ignore|☐
+Button13 > Cops Ignore|☐
+Button14 > Wanted Level|◀0▶
+Button15 > Never Wanted|☐
+Button16 > Freeze Wanted Level|☐
+Button17 > Run Speed|◀1.00▶
+Button18 > Swim Speed|◀1.00▶
+Button19 > Super Jump|☐
+Button20 > Undead offradar|☐
+
+Static1 > 1 / 23 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Handling|➤
+Button2 > Model Features|➤
+Button3 > Extra flags|➤
+Button4 > Customizations|➤
+Button5 > God mode|☐
+Button6 > Heal Vehicle
+Button7 > Destroy Vehicle
+Button8 > Boost Auto-Recharge|☐
+Button9 > Infinite Boost|☐
+Button10 > Freeze Vehicle Ammo|☐
+Button11 > Acceleration|◀0.00▶
+Button12 > Gravity|◀-24.00▶
+Button13 > Car Suspension Height|◀-1000.00▶
+Button14 > Dirt level|◀0.00▶
+Button15 > Override Speed Limit|◀0.00▶
+Button16 > Untargetable|✔
+Button17 > Wheel Steering|◀Front▶
+Button18 > Bomb Count|◀-1▶
+Button19 > Countermeasure Count|◀-1▶
+Button20 > Missile Count|◀-1▶
+Button21 > MKII Missile Count|◀-1▶
+Button22 > ⚠️ Forge Model for LSC|☐
+Button23 > Level Vehicle
+
+Static1 > 1 / 18 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Weapons Loadout|➤
+Button2 > Max All Ammo
+Button3 > Freeze Ammo|☐
+Button4 > Infinite Ammo|☐
+Button5 > Infinite Clip|☐
+Button6 > Max Ammo
+Button7 > Fast Reload|☐
+Button8 > No Recoil|☐
+Button9 > No Spread|☐
+Button10 > Long Range|☐
+Button11 > Aim FOV|◀50.00▶
+Button12 > Weapon Damage Multiplier|◀0.00▶
+Button13 > Ped Hit Force|◀120.00▶
+Button14 > Heli Hit Force|◀0.00▶
+Button15 > Vehicle Hit Force|◀0.00▶
+Button16 > Explosive Fists|☐
+Button17 > Explosive Ammo|☐
+Button18 > Fire Ammo|☐
+
+Static1 > 1 / 11 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Set Weather|◀Default▶
+Button2 > Upgrade Money Pickups|◀0▶
+Button3 > Cop killer|☐
+Button4 > Kill Attackers|☐
+Button5 > Kill Enemies
+Button6 > Kill Mission NPCs
+Button7 > Kill All NPCs
+Button8 > Kill all Mission Vehicles
+Button9 > Kill all Cars
+Button10 > Revive Dead Cars
+Button11 > End Cutscene
+
+Static1 > 1 / 31 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Waypoint
+Button2 > Objective
+Button3 > Next Objective
+Button4 > Vehicle
+Button5 > Any Pickup
+Button6 > Custom Locations|➤
+Button7 > Personal|➤
+Button8 > Players|➤
+Button9 > Mission Peds|➤
+Button10 > Mission Pickups|➤
+Button11 > Mission Vehicles|➤
+Button12 > Interiors|➤
+Button13 > Activities|➤
+Button14 > Airports|➤
+Button15 > Ammu Nation|➤
+Button16 > Barber|➤
+Button17 > Car Tuning|➤
+Button18 > Cinema|➤
+Button19 > Clothing Shops|➤
+Button20 > Collectables|➤
+Button21 > Convenience Stores|➤
+Button22 > Gang Attacks|➤
+Button23 > Heists|➤
+Button24 > Mobile Jammers|➤
+Button25 > Radio Antennas|➤
+Button26 > Points of View|➤
+Button27 > Stunt Jumps|➤
+Button28 > Letter Scraps|➤
+Button29 > Tattoos|➤
+Button30 > Unreachables|➤
+Button31 > Manual|➤
+
+Static1 > 1 / 24 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > No Idle Kick|✔
+Button2 > Change Appearance for Free|☐
+Button3 > Extend Bunker Delivery Timers|☐
+Button4 > Extend MC Delivery Timers|☐
+Button5 > Extend Nightclub Timers|☐
+Button6 > Extend vehicle Export Timers|☐
+Button7 > Remove CEO Crates Cooldown|☐
+Button8 > Remove VIP/MC Work Cooldown|☐
+Button9 > Remove Bunker Supply Delay|☐
+Button10 > Remove EWO Cooldown|☐
+Button11 > Remove I/E Cooldown|☐
+Button12 > Remove MC Supply Delay|☐
+Button13 > Remove Nightclub Cooldown|☐
+Button14 > Remove Oppressor Cooldown|☐
+Button15 > Remove Passive Mode Cooldown|☐
+Button16 > Remove Vehicle Delivery Delay|☐
+Button17 > No Mission Time Penalties|☐
+Button18 > No Orbital Cannon Cooldown|☐
+Button19 > AP Multiplier|◀1.00▶
+Button20 > RP Multiplier|◀1.00▶
+Button21 > Min Mission Payout|◀0▶
+Button22 > Arena Wheel AP Override|◀0▶
+Button23 > Arena Wheel $ Override|◀0▶
+Button24 > Arena Wheel RP Override|◀0▶
+
+Static1 > 1 / 25 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Independence Day|➤
+Button2 > Halloween|➤
+Button3 > X-Mas|➤
+Button4 > Unlock Caps|➤
+Button5 > Unlock Hats|➤
+Button6 > Brand Shirts|➤
+Button7 > Knock Offs T-Shirts|➤
+Button8 > Manufactures|➤
+Button9 > Movie Shirts|➤
+Button10 > Radio Station T-Shirts|➤
+Button11 > Clubs T-Shirts|➤
+Button12 > DJ T-Shirts|➤
+Button13 > Unlock Hoodies|➤
+Button14 > Unlock Shirts|➤
+Button15 > Wireframe Bodysuits|➤
+Button16 > Stunt Suits|➤
+Button17 > Arena DLC Unlocks|➤
+Button18 > Casino DLC Unlocks|➤
+Button19 > Summer DLC Unlocks|➤
+Button20 > Please Stop Me Hockey|☐
+Button21 > High Flyer Parachute Bag|☐
+Button22 > RDR2 Event Reward Mask|☐
+Button23 > Speed up Epsilon Outfit
+Button24 > Enable Peyote|☐
+Button25 > Unlock all vehicles|☐
+
+Static1 > 1 / 39 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Bunker Settings|➤
+Button2 > Casino Services|➤
+Button3 > MC Settings|➤
+Button4 > Nightclub Settings|➤
+Button5 > ⚠️ Drop money|➤
+Button6 > Get Personal Vehicle|➤
+Button7 > ⚠️ Set RP Level|◀1▶
+Button8 > Give Weapon|◀Marksman Rifle▶
+Button9 > Enable SecuroServ/MC|☐
+Button10 > Passive Mode|☐
+Button11 > Mute Phonecalls|☐
+Button12 > Offradar|☐
+Button13 > Ghost Organisation|☐
+Button14 > Reveal Players|☐
+Button15 > Bribe Authorities|☐
+Button16 > Cops Turn blind eye|☐
+Button17 > Enter PV
+Button18 > ⚠️ Repair vehicle
+Button19 > Remove Insurance Claims
+Button20 > Boat Pickup
+Button21 > Heli Pickup
+Button22 > Heli Pickup (Deluxe)
+Button23 > Deliver Ammo
+Button24 > Deliver Bullshark
+Button25 > Instant Bullshark
+Button26 > Deliver Minigun
+Button27 > Instant Minigun
+Button28 > Get Avenger
+Button29 > Get Dinghy
+Button30 > Get Kosatka
+Button31 > Get Mobile Operations Center
+Button32 > Get Terrorbyte
+Button33 > Instant Drone
+Button34 > Instant Minitank
+Button35 > Instant RC Bandito
+Button36 > Call Heli Backup
+Button37 > Call Airstrike
+Button38 > Disconnect Session
+Button39 > Empty Session
+
+Static1 > 1 / 34 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Unlock all vehicles|☐
+Button2 > Clone Vehicle|➤
+Button3 > Saved Vehicles|➤
+Button4 > Vehicle Class|◀Super▶
+Button5 > Vehicle Model|◀Autarch▶
+Button6 > Primary Color|◀Random▶
+Button7 > Secondary Color|◀Random▶
+Button8 > Pearlesent Color|◀Random▶
+Button9 > Wheel Color|◀Random▶
+Button10 > Interior Color|◀Random▶
+Button11 > Dashboard Color|◀Random▶
+Button12 > Wheel Type|◀Stock▶
+Button13 > Max Armor|✔
+Button14 > Max Brakes|✔
+Button15 > Max EMS|✔
+Button16 > Max Suspension|✔
+Button17 > Max Transmission|✔
+Button18 > Turbo Tuning|✔
+Button19 > Livery|◀-1▶
+Button20 > Xenon Headlights|◀White▶
+Button21 > Neon Lights|✔
+Button22 > Neon (R)|◀255▶
+Button23 > Neon (G)|◀255▶
+Button24 > Neon (B)|◀255▶
+Button25 > Smoke (R)|◀255▶
+Button26 > Smoke (G)|◀255▶
+Button27 > Smoke (B)|◀255▶
+Button28 > Limo Windows|☐
+Button29 > Bulletproof Tires|✔
+Button30 > Spawn Anonymous
+Button31 > Spawn Anonymous (maxed)
+Button32 > Spawn Faked Personal
+Button33 > Spawn Faked Personal (maxed)
+Button34 > Spawn Pegasus
+
+Static1 > 1 / 15 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Disable Freeze|✔
+Button2 > Disable PTFX|✔
+Button3 > Disable Remote Altering Stats|✔
+Button4 > Disable Remote Alter Wanted Level|✔
+Button5 > Disable Remote Control|✔
+Button6 > Disable Remote Ragdoll|✔
+Button7 > Disable Remote Teleport|✔
+Button8 > Disable Remove All Weapons|✔
+Button9 > Disable Remove Weapon|✔
+Button10 > Disable Force Kick to SP|✔
+Button11 > Disable Send to Job|✔
+Button12 > Disable Apartment Teleport|✔
+Button13 > Disable Vehicle Kick|✔
+Button14 > Disable Weather Control|✔
+Button15 > Detach Object
+
+Static1 > 1 / 9 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Menu X position|◀240▶
+Button2 > Menu Y position|◀40▶
+Button3 > Max viewable items|◀50▶
+Button4 > Opacity|◀176▶
+Button5 > Disable Handling Restore|☐
+Button6 > Disable Weapon Restore|☐
+Button7 > Save Config
+Button8 > Reload Config
+Button9 > Quit
+
+Static1 > 1 / 3 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > ⚠️ Get Lucky Wheel Price|◀Clothing (1)▶
+Button2 > ⚠️ Rig Slot Machines
+Button3 > ⚠️ Increase Daily limit|☐
+
+Static1 > 4 / 4 
+Static2 > Kiddion's Modest Menu v0.8.10
+Button1 > Leave Online
+Button2 > Go To Creator
+Button3 > Choose Character
+Button4 > Online Session|◀Join Public▶
+

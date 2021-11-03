@@ -1,0 +1,5 @@
+config*.json
+/!config.json
+*.ahk
+*.exe
+/modest-menu*/
