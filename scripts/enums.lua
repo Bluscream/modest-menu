@@ -1,7 +1,7 @@
 Event = {
-    OnPlayerChanged = "OnPlayerChanged", --> function(Ped|nil oldPlayer, Ped|nil newPlayer)
-    OnVehicleChanged = "OnVehicleChanged", --> function(Vehicle|nil oldVehicle, Vehicle|nil newVehicle)
-    OnWeaponChanged = "OnWeaponChanged" --> function(Weapon|nil oldWeapon, Weapon|nil newWeapon)
+    OnPlayerChanged = "OnPlayerChanged", -- > function(Ped|nil oldPlayer, Ped|nil newPlayer)
+    OnVehicleChanged = "OnVehicleChanged", -- > function(Vehicle|nil oldVehicle, Vehicle|nil newVehicle)
+    OnWeaponChanged = "OnWeaponChanged" -- > function(Weapon|nil oldWeapon, Weapon|nil newWeapon)
 }
 
 PedType = {
@@ -11,7 +11,7 @@ PedType = {
     Female = 5 ,
     Cop = 6,
     Human = 26,
-    SWAT = 27 ,
+    SWAT = 27,
     Animal = 28,
     Army = 29
 }
