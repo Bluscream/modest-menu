@@ -1,73 +1,3 @@
-Event = {
-    OnPlayerChanged = "OnPlayerChanged", -- > function(Ped|nil oldPlayer, Ped|nil newPlayer)
-    OnVehicleChanged = "OnVehicleChanged", -- > function(Vehicle|nil oldVehicle, Vehicle|nil newVehicle)
-    OnWeaponChanged = "OnWeaponChanged" -- > function(Weapon|nil oldWeapon, Weapon|nil newWeapon)
-}
-
-PedType = {
-    Any = -1,
-    Player = 1,
-    Male = 4 ,
-    Female = 5 ,
-    Cop = 6,
-    Human = 26,
-    SWAT = 27,
-    Animal = 28,
-    Army = 29
-}
-
-PedConfigFlag = {
-    CanPunch = 18,
-    CanFlyThruWindscreen = 32,
-    DiesByRagdoll = 33,
-    PutOnMotorcycleHelmet = 35,
-    NoCollision = 52,
-    IsShooting = 58,
-    IsOnGround = 60,
-    NoCollide = 62,
-    Dead = 71,
-    IsSniperScopeActive = 72,
-    SuperDead = 73,
-    IsInAir = 76,
-    IsAiming = 78,
-    Drunk = 100,
-    IsNotRagdollAndNotPlayingAnim = 104,
-    NoPlayerMelee = 122,
-    NmMessage466 = 125,
-    CanAttackFriendlies = 140,
-    InjuredLimp = 166,
-    InjuredLimp2 = 170,
-    DisableShufflingToDriverSeat = 184,
-    InjuredDown = 187,
-    Shrink = 223,
-    MeleeCombat = 224,
-    DisableStoppingVehEngine = 241,
-    IsOnStairs = 253,
-    HasOneLegOnGround = 276,
-    NoWrithe = 281,
-    Freeze = 292,
-    IsStill = 301,
-    NoPedMelee = 314,
-    PedSwitchingWeapon = 331,
-    Alpha = 410,
-    DisablePropKnockOff = 423,
-    DisableStartingVehEngine = 429,
-    FlamingFootprints = 421
-}
-
-VehicleConfigFlag = {
-    PressingHorn = 1,
-    Shooting = 2,
-    SirenActive = 4,
-    VehicleDead = 8,
-    Aiming = 16,
-    Driver = 32,
-    HasAimData = 64,
-    BurnOut = 128,
-    ExitingVehicle = 256,
-    PlayerDead = 512
-}
-
 KeyCode = {
     VK_LBUTTON = 1, -- Left mouse button
     VK_RBUTTON = 2, -- Right mouse button
@@ -243,3 +173,90 @@ KeyCode = {
     VK_PA1 = 253, -- PA1 key
     VK_OEM_CLEAR = 254 -- Clear key
 }
+PedConfigFlag = {
+    CanPunch = 18,
+    CanFlyThruWindscreen = 32,
+    DiesByRagdoll = 33,
+    PutOnMotorcycleHelmet = 35,
+    NoCollision = 52,
+    IsShooting = 58,
+    IsOnGround = 60,
+    NoCollide = 62,
+    Dead = 71,
+    IsSniperScopeActive = 72,
+    SuperDead = 73,
+    IsInAir = 76,
+    IsAiming = 78,
+    Drunk = 100,
+    IsNotRagdollAndNotPlayingAnim = 104,
+    NoPlayerMelee = 122,
+    NmMessage466 = 125,
+    CanAttackFriendlies = 140,
+    InjuredLimp = 166,
+    InjuredLimp2 = 170,
+    DisableShufflingToDriverSeat = 184,
+    InjuredDown = 187,
+    Shrink = 223,
+    MeleeCombat = 224,
+    DisableStoppingVehEngine = 241,
+    IsOnStairs = 253,
+    HasOneLegOnGround = 276,
+    NoWrithe = 281,
+    Freeze = 292,
+    IsStill = 301,
+    NoPedMelee = 314,
+    PedSwitchingWeapon = 331,
+    Alpha = 410,
+    DisablePropKnockOff = 423,
+    DisableStartingVehEngine = 429,
+    FlamingFootprints = 421
+}
+
+local panicModeActive = false
+
+local function togglePanicMode()
+    panicModeActive = not panicModeActive
+    if panicModeActive then
+        menu:set_disable_crash_to_sp(panicModeActive)
+        menu:set_disable_send_to_island(panicModeActive)
+        menu:set_disable_send_to_job(panicModeActive)
+        menu:set_disable_teleport_to_apartment(panicModeActive)
+        menu:set_disable_vehicle_kick(panicModeActive)
+        menu:set_disable_weather_control(panicModeActive)
+        if localplayer ~= nil then
+            localplayer:set_godmode(panicModeActive)
+            if localplayer:is_in_vehicle() then
+                menu:level_current_vehicle()
+                veh = localplayer:get_current_vehicle()
+                if veh ~= nil then
+                    veh:set_health(1000)
+                    veh:set_godmode(panicModeActive)
+                    veh:set_bulletproof_tires(panicModeActive)
+                else
+                    menu.heal_vehicle()
+                end
+            end
+        else
+            menu.heal_player()
+        end
+        menu:detach_objects()
+        menu:clear_wanted_level()
+        menu:kill_all_enemies()
+        menu:call_heli_backup()
+        menu:remove_insurance_claims()
+        menu:end_cutscene()
+        menu:call_heli_backup()
+    end
+    if localplayer ~= nil then
+        localplayer:set_config_flag(PedConfigFlag.DiesByRagdoll, not panicModeActive)
+    end
+    menu:set_bribe_authorities(panicModeActive)
+    menu:set_cops_turn_blind_eye(panicModeActive)
+    menu:set_ghost_organisation(panicModeActive)
+    menu:set_offradar(panicModeActive)
+    -- menu:set_passive(panicModeActive)
+    menu:set_reveal_player(panicModeActive)
+end
+
+menu.add_toggle("PANIC MODE", function() return panicModeActive end, togglePanicMode)
+local ref = menu.register_hotkey(KeyCode.VK_F10, togglePanicMode)

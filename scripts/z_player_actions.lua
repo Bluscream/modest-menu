@@ -1,3 +1,42 @@
+local PedConfigFlag = {
+    CanPunch = 18,
+    CanFlyThruWindscreen = 32,
+    DiesByRagdoll = 33,
+    PutOnMotorcycleHelmet = 35,
+    NoCollision = 52,
+    IsShooting = 58,
+    IsOnGround = 60,
+    NoCollide = 62,
+    Dead = 71,
+    IsSniperScopeActive = 72,
+    SuperDead = 73,
+    IsInAir = 76,
+    IsAiming = 78,
+    Drunk = 100,
+    IsNotRagdollAndNotPlayingAnim = 104,
+    NoPlayerMelee = 122,
+    NmMessage466 = 125,
+    CanAttackFriendlies = 140,
+    InjuredLimp = 166,
+    InjuredLimp2 = 170,
+    DisableShufflingToDriverSeat = 184,
+    InjuredDown = 187,
+    Shrink = 223,
+    MeleeCombat = 224,
+    DisableStoppingVehEngine = 241,
+    IsOnStairs = 253,
+    HasOneLegOnGround = 276,
+    NoWrithe = 281,
+    Freeze = 292,
+    IsStill = 301,
+    NoPedMelee = 314,
+    PedSwitchingWeapon = 331,
+    Alpha = 410,
+    DisablePropKnockOff = 423,
+    DisableStartingVehEngine = 429,
+    FlamingFootprints = 421
+}
+
 -- Function definitions
  
 local function Text(text)
@@ -39,7 +78,7 @@ end
 local function IsModder(ply)
 	if not IsPlayer(ply) then return false end
 	
-	if ply:get_max_health() < 100 then return true end
+	if ply:get_max_health() > 100 then return true end -- <
 	if ply:is_in_vehicle() and ply:get_godmode() then return true end
 	if ply:get_run_speed() > 1.0 or ply:get_swim_speed() > 1.0 then return true end
  
@@ -108,7 +147,7 @@ local function TeleportVehiclesToPlayer(ply)
  
 	for veh in replayinterface.get_vehicles() do
 		if not currentvehicle or currentvehicle ~= veh then
-			-- veh:set_position(pos)
+			veh:set_position(pos)
 		end
 	end
 end
@@ -119,7 +158,7 @@ local function TeleportPedsToPlayer(ply)
 	local pos = ply:get_position()
 	for ped in replayinterface.get_peds() do
 		if IsNPC(ped) then
-			-- ped:set_position(pos)
+			ped:set_position(pos)
 		end
 	end
 end
@@ -138,7 +177,7 @@ local function ExplodePlayer(ply)
 		if not currentvehicle or currentvehicle ~= veh then
 			veh:set_rotation(vector3(0,0,180))
 			veh:set_health(-1)
-			-- veh:set_position(pos)
+			veh:set_position(pos)
 		end
 	end
 end
@@ -203,15 +242,21 @@ local function setConfigFlag(flag, v)
 	player = GetPlayerByArrayIndex(selectedplayer)
 	if player ~= nil then player:set_config_flag(flag, v) end
 end
+local function add_flag_toggle(name, flag)
+	menu.add_toggle(name, function() return hasConfigFlag(flag) end, function(v) setConfigFlag(flag, v) end)
+end
 
 menu.add_action("[P] Teleport me to player", function() TeleportToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 menu.add_action("[P] Teleport Vehicles to player", function() TeleportVehiclesToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 menu.add_action("[P] Teleport Peds to player", function() TeleportPedsToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 menu.add_action("[P] Explode player", function() ExplodePlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_toggle("[P] Tiny", function() return hasConfigFlag(223) end, function(v) setConfigFlag(223, v) end)
-menu.add_toggle("[P] Freeze", function() return hasConfigFlag(292) end, function(v) setConfigFlag(292, v) end)
-menu.add_toggle("[P] Keep engine running", function() return hasConfigFlag(241) end, function(v) setConfigFlag(241, v) end)
-menu.add_toggle("[P] Can attack friendlies", function() return hasConfigFlag(140) end, function(v) setConfigFlag(140, v) end)
+
+
+add_flag_toggle("[P] Tiny", PedConfigFlag.Shrink)
+add_flag_toggle("[P] Freeze", PedConfigFlag.Freeze)
+add_flag_toggle("[P] Keep engine running", PedConfigFlag.DisableStoppingVehEngine)
+add_flag_toggle("[P] Don't start engine", PedConfigFlag.DisableStartingVehEngine)
+add_flag_toggle("[P] Can attack friendlies", PedConfigFlag.CanAttackFriendlies)
 
 
  

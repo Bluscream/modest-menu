@@ -1,5 +1,13 @@
-menu.add_toggle("Weather: Snow", function()	
-	return globals.get_boolean(262145 + 4724) 
-end, function(value)
-	if value ~= nil then globals.set_boolean(262145 + 4724, value) end
-end)
+local Global = {
+    Snow = 266869
+}
+
+local function ToggleSnow()
+	if globals.get_boolean(Global.Snow) then
+		globals.set_boolean(Global.Snow, false)
+	else
+		globals.set_boolean(Global.Snow, true)
+	end
+end
+
+menu.add_toggle("Weather: Snow", function() return globals.get_boolean(Global.Snow) end, ToggleSnow)
