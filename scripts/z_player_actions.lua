@@ -194,13 +194,7 @@ local function add_player_option(ply)
 		selectedplayer = d
 	end)
 end
- 
- 
 
-menu.add_action("[P] Teleport me to player", function() TeleportToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_action("[P] Teleport Vehicles to player", function() TeleportVehiclesToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_action("[P] Teleport Peds to player", function() TeleportPedsToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_action("Explode Player", function() ExplodePlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 local function hasConfigFlag(flag)
 	player = GetPlayerByArrayIndex(selectedplayer)
 	if player ~= nil then return player:get_config_flag(flag) end
@@ -209,6 +203,11 @@ local function setConfigFlag(flag, v)
 	player = GetPlayerByArrayIndex(selectedplayer)
 	if player ~= nil then player:set_config_flag(flag, v) end
 end
+
+menu.add_action("[P] Teleport me to player", function() TeleportToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
+menu.add_action("[P] Teleport Vehicles to player", function() TeleportVehiclesToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
+menu.add_action("[P] Teleport Peds to player", function() TeleportPedsToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
+menu.add_action("[P] Explode player", function() ExplodePlayer(GetPlayerByArrayIndex(selectedplayer)) end)
 menu.add_toggle("[P] Tiny", function() return hasConfigFlag(223) end, function(v) setConfigFlag(223, v) end)
 menu.add_toggle("[P] Freeze", function() return hasConfigFlag(292) end, function(v) setConfigFlag(292, v) end)
 menu.add_toggle("[P] Keep engine running", function() return hasConfigFlag(241) end, function(v) setConfigFlag(241, v) end)
