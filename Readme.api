@@ -128,17 +128,6 @@ Vehicle	ped:get_nearest_vehicle()
 Integer	ped:get_player_id()
 Integer	ped:get_pedtype()
 
-Ped Types:  
-Any ped = -1  
-Player = 1  
-Male = 4   
-Female = 5   
-Cop = 6  
-Human = 26  
-SWAT = 27   
-Animal = 28  
-Army = 29  
-
 vector3	ped:get_position()
 bool	ped:get_reset_flag(Integer index)
 vector3	ped:get_rotation()
