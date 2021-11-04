@@ -2,7 +2,7 @@
   "CustomVehicles": [
     {
       "DashboardColorIndex": 1,
-      "EnvEffScale": -1.0,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": false,
         "CustomPrimaryColor": false,
@@ -105,12 +105,15 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": 0,
-      "WheelVariations": [-1, -1],
+      "WheelVariations": [
+        -1,
+        -1
+      ],
       "WindowTint": 0
     },
     {
       "DashboardColorIndex": 111,
-      "EnvEffScale": -1.0,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -213,12 +216,15 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": 9,
-      "WheelVariations": [1, 1],
+      "WheelVariations": [
+        1,
+        1
+      ],
       "WindowTint": 0
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": -1.0,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": true,
@@ -321,12 +327,15 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": 9,
-      "WheelVariations": [1, 1],
+      "WheelVariations": [
+        1,
+        1
+      ],
       "WindowTint": 1
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": -1.0,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": true,
@@ -429,12 +438,15 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": -1,
-      "WheelVariations": [-1, -1],
+      "WheelVariations": [
+        -1,
+        -1
+      ],
       "WindowTint": 0
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": 0.0,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -537,7 +549,10 @@
       ],
       "WheelColorIndex": 156,
       "WheelType": 9,
-      "WheelVariations": [1, 1],
+      "WheelVariations": [
+        1,
+        1
+      ],
       "WindowTint": 1
     }
   ]
