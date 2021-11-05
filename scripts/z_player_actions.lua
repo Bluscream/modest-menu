@@ -256,9 +256,9 @@ add_flag_toggle("[P] Tiny", PedConfigFlag.Shrink)
 add_flag_toggle("[P] Freeze", PedConfigFlag.Freeze)
 add_flag_toggle("[P] Keep engine running", PedConfigFlag.DisableStoppingVehEngine)
 add_flag_toggle("[P] Don't start engine", PedConfigFlag.DisableStartingVehEngine)
+add_flag_toggle("[P] Don't go to driver seat", PedConfigFlag.DisableShufflingToDriverSeat)
 add_flag_toggle("[P] Can attack friendlies", PedConfigFlag.CanAttackFriendlies)
-
-
+add_flag_toggle("[P] Die from ragdoll", PedConfigFlag.DiesByRagdoll)
  
 -- Building Player List
  

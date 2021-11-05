@@ -23,7 +23,7 @@ if menu then
     function menu:remove_callback(event) end -- (ref) -> nil
 
     function menu:register_hotkey(keycode, callback) end -- (func) -> ref
-    function menu:remove_hotkey(func) end -- (ref) -> nil
+    function menu:remove_hotkey(func) end -- (mem) -> nil
 
     function menu:add_action(name, action_function) end -- (str, func) -> nil
     function menu:add_float_range(name, step, min, max, getter, setter) end -- (str, float, float, float, func, func) -> nil
