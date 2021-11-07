@@ -1,8 +1,3 @@
-Event = {
-    OnPlayerChanged = "OnPlayerChanged", -- > function(Ped|nil oldPlayer, Ped|nil newPlayer)
-    OnVehicleChanged = "OnVehicleChanged", -- > function(Vehicle|nil oldVehicle, Vehicle|nil newVehicle)
-    OnWeaponChanged = "OnWeaponChanged" -- > function(Weapon|nil oldWeapon, Weapon|nil newWeapon)
-}
 KeyCode = {
     VK_LBUTTON = 1, -- Left mouse button
     VK_RBUTTON = 2, -- Right mouse button
@@ -178,33 +173,3 @@ KeyCode = {
     VK_PA1 = 253, -- PA1 key
     VK_OEM_CLEAR = 254 -- Clear key
 }
-
-local enabled = false
-local _mems = {}
-
-local function Trigger()
-    if enabled and localplayer ~= nil then
-        localplayer:set_wanted_level(5)
-    end
-end
-
-for id, name in ipairs(Event) do
-    menu.register_callback(name, Trigger)
-end
-
-local function Toggle()
-    Trigger()
-    enabled = not enabled
-    if enabled then
-        for name, code in ipairs(KeyCode) do
-            table.insert(_mems, menu.register_hotkey(code, Trigger))
-        end
-    else
-        for i, mem in ipairs(_mems) do
-            menu:remove_hotkey(mem)
-        end
-        _mems = {}
-    end
-end
-
-menu.add_toggle("Permanent 5 Stars", function() return enabled end, Toggle)

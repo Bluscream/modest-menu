@@ -40,3 +40,9 @@ end
 
 -- Uncomment the next line to toggle undead offradar when pressing F4
 -- menu.register_hotkey(115, ToggleUndeadOffradar)
+
+menu.add_toggle("Unique Cargo Toggle", function()	
+	return globals.get_boolean(1683827) 
+end, function(value)
+	globals.set_boolean(1683827, value)
+end)
