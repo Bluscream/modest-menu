@@ -2,8 +2,8 @@
   "CustomLocations": [
     {
       "Name": "Unknown",
-      "Pitch": -0.000000,
-      "Roll": 0.000000,
+      "Pitch": -0.0,
+      "Roll": 0.0,
       "X": -1587.543335,
       "Y": -3011.416748,
       "Yaw": -1.069723,
