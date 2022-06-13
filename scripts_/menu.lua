@@ -1,3 +1,42 @@
+local demo_menu = menu.add_submenu("Demo")
+
+local function PedDrop()
+	local position = localplayer:get_position()
+	position.z = position.z + 30
+
+	for p in replayinterface.get_peds() do
+		if p == nil or p == localplayer then
+			goto continue
+		end
+		
+		if p:get_pedtype() < 4 then
+			goto continue
+		end
+		
+		if p:is_in_vehicle() then
+			goto continue
+		end
+
+		p:set_position(position)
+
+		if p:get_health() > 99 then
+			p:set_position(position)
+			p:set_freeze_momentum(true)
+			p:set_health(0)
+			p:set_wallet(1337)
+			break
+		end
+
+		::continue::
+	end
+end
+
+-- Uncomment the next line to drop a ped when pressing F3
+-- menu.register_hotkey(114, PedDrop)
+
+-- Add Menu action under scripts sub menu
+demo_menu:add_action("Drop Ped", PedDrop)
+
 local original_max_health = 0.0
 
 local function GetUndeadOffradar()
@@ -29,7 +68,7 @@ local function SetUndeadOffradar(value)
 	end
 end
 
-menu.add_toggle("Undead offradar", GetUndeadOffradar, SetUndeadOffradar)
+demo_menu:add_toggle("Undead offradar", GetUndeadOffradar, SetUndeadOffradar)
 
 local function ToggleUndeadOffradar()
 	value = GetUndeadOffradar()
@@ -40,9 +79,3 @@ end
 
 -- Uncomment the next line to toggle undead offradar when pressing F4
 -- menu.register_hotkey(115, ToggleUndeadOffradar)
-
-menu.add_toggle("Unique Cargo Toggle", function()	
-	return globals.get_boolean(1683827) 
-end, function(value)
-	globals.set_boolean(1683827, value)
-end)
