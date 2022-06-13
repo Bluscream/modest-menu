@@ -3,4 +3,5 @@ config*.json
 *.ahk
 *.exe
 *.lnk
+*.log
 /modest-menu*/
