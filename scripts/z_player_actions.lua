@@ -166,7 +166,7 @@ local function GetVehicleNameByHash(hash)
 	for i = 1, #VehicleHashes do
 		if VehicleHashes[i] == hash then return VehicleNames[i] end
 	end
-	return "Vehicle"
+	return "🚗"
 end
 -- Action functions
 local function TeleportToPlayer(ply, seconds)
@@ -319,9 +319,13 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 	if IsModder(ply) then
 		text = text.." | MOD"
 	end
+	-- Is In GodMode, if not then Player Health & Armor
 	if ply:get_godmode() then
 		text = text.." | GOD"
+	else
+		text = text.." "..string.format("%4.0f",(ply:get_health()/ply:get_max_health())*100).."%/"..string.format("%2.0f",ply:get_armour()*2).."%"
 	end
+
 	if ply:is_in_vehicle() then
 		local veh = ply:get_current_vehicle()
 		if veh ~= nil then
@@ -331,18 +335,24 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 				if veh_name ~= nil then
 					text = text.." | "..veh_name
 				else
-					text = text.." | Vehicle"
+					text = text.." | 🚗"
 				end
 			else
-				text = text.." | Vehicle"
+				text = text.." | 🚗"
 			end
 			if veh:get_godmode() then
 				text = text.."*"
 			end
 		else
-			text = text.." | Vehicle"
+			text = text.." | 🚗"
 		end
 	end
+	else 
+		text = text.." | 🚶"
+	end
+
+	-- Player Wanted Level
+	text = text.." | "..ply:get_wanted_level().."✰"
 
 	-- Player's Distance From You
 	text = text.." | "..math.floor(Distance(ply:get_position(), localplayer:get_position())).." m"

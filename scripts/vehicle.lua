@@ -49,9 +49,27 @@ local function UnlockOwnDoor()
 		end
 	end
 end
+local function GetEngine()
+	if localplayer == nil then
+		return nil
+	else
+		return localplayer:is_in_vehicle()
+	end
+end
+local function SetEngine(value)
+	if localplayer ~= nil then
+		if value then
+			localplayer:set_config_flag(241, true)
+		else
+			localplayer:set_config_flag(241, false)
+		end
+	end
+end
+
 menu.register_hotkey(112, function() menu.enter_personal_vehicle() end)
 menu.register_hotkey(70, UnlockOwnDoor)
 menu.register_callback('OnVehicleChanged', OnVehicleChanged)
+menu.add_toggle("Engine Status", GetEngine, SetEngine)
 menu.add_toggle("Auto Vehicle Godmode", function() return autoVehicleGodMode end, function(v) autoVehicleGodMode = v end)
 menu.add_toggle("Auto Vehicle Repair", function() return autoRepairVehicle end, function(v) autoRepairVehicle = v end)
 menu.add_toggle("Auto Vehicle License Plate", function() return autoVehicleLicensePlate end, function(v) autoVehicleLicensePlate = v end)
