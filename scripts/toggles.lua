@@ -1,14 +1,5 @@
 require("init")
-
-local function ToggleSnow()
-	if globals.get_boolean(Global.Snow) then
-		globals.set_boolean(Global.Snow, false)
-	else
-		globals.set_boolean(Global.Snow, true)
-	end
-end
-
--- menu.add_toggle("Weather: Snow", function() return globals.get_boolean(Global.Snow) end, ToggleSnow)
+menu_add_global_toggle(Global.Snow, "Weather: Snow")
 -- menu.add_action("become Bigfoot", function()
 -- 	globals.set_int(2671444+59, 1)
 --     globals.set_int(2671444+46, -1389097126)

@@ -1,16 +1,19 @@
+function menu_add_global_toggle(var, title)
+    menu.add_toggle(title, function() return globals.get_boolean(var) end, function(var) global_toggle(var) end)
+end
 function menu_add_enum_range(enum, title, sort, action_callback, default_key_callback)
     local enum_keys = table_get_keys(enum)
     local enum_keys_len = table_count(enum_keys)
     local enum_values = table_get_values(enum)
     local function default_index() return table_index_of(enum_keys, default_key_callback()) end
-    local i = default_index()
+    local i = default_index() or 1050
     local function curkey() return enum_keys[i] end
     local function curval() return enum_values[i] end
     local function set_title()
         local title = title .. " | "
-        if i < enum_keys_len then title = title .. " < " end
+        if i ~= nil and i < enum_keys_len then title = title .. " < " end
         title = title .. enum_keys[i]
-        if i > 0 then title = title .. " > " end
+        if i ~= nil and i > 0 then title = title .. " > " end
         return title
     end
     local function santize_index(i)

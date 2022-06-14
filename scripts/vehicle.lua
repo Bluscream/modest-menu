@@ -1,3 +1,5 @@
+require("init")
+
 local autoVehicleGodMode = true
 local autoRepairVehicle = false
 local autoVehicleLicensePlate = true
@@ -20,6 +22,8 @@ local function OnVehicleChanged(oldVehicle, newVehicle)
 			newVehicle:set_number_plate_index(0)
 			if newVehicleHash == 0x586765fb then -- Deluxo
 				newVehicle:set_number_plate_text('outatime')
+			elseif string.startsWith(VehicleName[newVehicleHash], "police") then
+				newVehicle:set_number_plate_text('LSPD:FR')
 			else
 				newVehicle:set_number_plate_text('x blu x')
 			end
@@ -31,22 +35,23 @@ local function OnVehicleChanged(oldVehicle, newVehicle)
 		if autoVehicleLock == true then
 			newVehicle:set_door_lock_state(10)
 		end
-	elseif oldVehicle ~= nil then
-		if autoVehicleLock then
-			oldVehicle:set_door_lock_state(1)
-		end
+	end
+	if oldVehicle ~= nil then
+	-- if autoVehicleLock then
+		oldVehicle:set_door_lock_state(1)
+	-- end
 	end
 end
 local function UnlockOwnDoor()
 	if localplayer ~= nil then
-		if localplayer:is_in_vehicle() then
-			local veh = localplayer:get_current_vehicle()
-			if veh ~= nil then
-				if veh:get_door_lock_state() ~= 1 then
-					veh:set_door_lock_state(1)
-				end
+		-- if localplayer:is_in_vehicle() then
+		local veh = localplayer:get_current_vehicle()
+		if veh ~= nil then
+			if veh:get_door_lock_state() ~= 1 then
+				veh:set_door_lock_state(1)
 			end
 		end
+		-- end
 	end
 end
 local function GetEngine()
@@ -65,8 +70,8 @@ local function SetEngine(value)
 	end
 end
 
-menu.register_hotkey(112, function() menu.enter_personal_vehicle() end)
-menu.register_hotkey(70, UnlockOwnDoor)
+-- menu.register_hotkey(112, function() menu.enter_personal_vehicle() end)
+menu.register_hotkey(KeyCode.F, UnlockOwnDoor)
 menu.register_callback('OnVehicleChanged', OnVehicleChanged)
 menu.add_toggle("Engine Status", GetEngine, SetEngine)
 menu.add_toggle("Auto Vehicle Godmode", function() return autoVehicleGodMode end, function(v) autoVehicleGodMode = v end)

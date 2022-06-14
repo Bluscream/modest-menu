@@ -107,7 +107,7 @@ local function ExplodePlayer(ply)
 	end
 	for veh in replayinterface.get_vehicles() do
 		if not currentvehicle or currentvehicle ~= veh then
-		if not PlyVeh(veh) then
+		if not player_get_vehicle(veh) then
 			acc=veh:get_acceleration()
 			veh:set_acceleration(0)
 			veh:set_rotation(vector3(0,0,180))
@@ -131,7 +131,7 @@ local function LaunchPlayer(ply)
 	local i = 0
 	for veh in replayinterface.get_vehicles() do
 		if not currentvehicle or currentvehicle ~= veh then
-		if not PlyVeh(veh) then
+		if not player_get_vehicle(veh) then
 			acc=veh:get_acceleration()
 			veh:set_acceleration(0)
 			veh:set_rotation(vector3(0,0,0))
@@ -161,7 +161,7 @@ local function SlamPlayer(ply)
 	local i = 0
 	for veh in replayinterface.get_vehicles() do
 		if not currentvehicle or currentvehicle ~= veh then
-		if not PlyVeh(veh) then
+		if not player_get_vehicle(veh) then
 			acc=veh:get_acceleration()
 			veh:set_acceleration(0)
 			veh:set_rotation(vector3(0,0,0))
