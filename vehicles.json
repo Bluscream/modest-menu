@@ -573,7 +573,7 @@
     {
       "DashboardColorIndex": 1,
       "DriftTyres": false,
-      "EnvEffScale": 1.000000,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -687,7 +687,7 @@
     {
       "DashboardColorIndex": 1,
       "DriftTyres": false,
-      "EnvEffScale": 1.000000,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -801,7 +801,7 @@
     {
       "DashboardColorIndex": 3,
       "DriftTyres": false,
-      "EnvEffScale": 1.000000,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -915,7 +915,7 @@
     {
       "DashboardColorIndex": 3,
       "DriftTyres": false,
-      "EnvEffScale": 1.000000,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,

@@ -1,7 +1,7 @@
 local autoVehicleGodMode = true
 local autoRepairVehicle = false
 local autoVehicleLicensePlate = true
-local autoVehicleLock = true
+local autoVehicleLock = false
 local autoSiren = false
 
 local function OnVehicleChanged(oldVehicle, newVehicle)

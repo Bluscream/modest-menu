@@ -21,3 +21,19 @@ end
 function math_floor(num)
 	return num//1
 end
+function math_thousand_seperator(value)
+	while true do
+	   value, k = string.gsub(value, "^(-?%d+)(%d%d%d)", '%1,%2')
+	   if (k==0) then
+		  break
+	   end
+	end
+	return value
+ end
+ function math_round(val, decimal)
+	if (decimal) then
+	   return math.floor( (val * 10^decimal) + 0.5) / (10^decimal)
+	else
+	   return math.floor(val+0.5)
+	end
+ end

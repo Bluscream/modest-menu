@@ -1,22 +1,6 @@
+require("init")
 -- MADE BY zFutoX
 local spoofDetection = menu.add_submenu("Detect Spoofing")
-function thousand_seperator(value)
-	while true do
-	   value, k = string.gsub(value, "^(-?%d+)(%d%d%d)", '%1,%2')
-	   if (k==0) then
-		  break
-	   end
-	end
-	return value
- end
- function round(val, decimal)
-	if (decimal) then
-	   return math.floor( (val * 10^decimal) + 0.5) / (10^decimal)
-	else
-	   return math.floor(val+0.5)
-	end
- end
- 
  function calcRPover120(lvl)
 	return 25*lvl^2+23575*lvl-1023150
  end
@@ -38,14 +22,14 @@ spoofDetection:add_action("Check for modders", function()
 	   money_all_val = globals.get_int(1853131+1+(PLAYERID*888)+205+56)
 	   money_cash_val = globals.get_int(1853131+1+(PLAYERID*888)+205+3)
 	   money_bank_val = money_all_val-money_cash_val
-	   money_all = thousand_seperator(money_all_val)
-	   money_cash = thousand_seperator(money_cash_val)
-	   money_bank = thousand_seperator(money_bank_val)
+	   money_all = math_thousand_seperator(money_all_val)
+	   money_cash = math_thousand_seperator(money_cash_val)
+	   money_bank = math_thousand_seperator(money_bank_val)
  
-	   gtakd = round(globals.get_float(1853131+1+(PLAYERID*888)+205+26), 2)
+	   gtakd = math_round(globals.get_float(1853131+1+(PLAYERID*888)+205+26), 2)
 	   kills = globals.get_int(1853131+1+(PLAYERID*888)+205+28)
 	   deaths = globals.get_int(1853131+1+(PLAYERID*888)+205+29)
-	   calckd = round(kills/deaths, 2)
+	   calckd = math_round(kills/deaths, 2)
  
 	   gtarank = globals.get_int(1853131+1+(PLAYERID*888)+205+6)
 	   rp = globals.get_int(1853131+1+(PLAYERID*888)+205+1)
