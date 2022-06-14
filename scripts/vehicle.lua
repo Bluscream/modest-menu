@@ -12,9 +12,11 @@ local function OnVehicleChanged(oldVehicle, newVehicle)
 		if autoVehicleGodMode == true and not newVehicle:get_godmode() then
 			-- menu.heal_vehicle()
 			newVehicle:set_godmode(true)
+			newVehicle:set_can_be_visibly_damaged(false)
 		end
 		if autoVehicleLicensePlate == true then
 			newVehicleHash = newVehicle:get_model_hash()
+			newVehicle:set_number_plate_index(1)
 			if newVehicleHash == 0x586765fb then -- Deluxo
 				newVehicle:set_number_plate_text('outatime')
 			else

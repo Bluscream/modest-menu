@@ -2,7 +2,8 @@
   "CustomVehicles": [
     {
       "DashboardColorIndex": 1,
-      "EnvEffScale": -1.0,
+      "DriftTyres": false,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": false,
         "CustomPrimaryColor": false,
@@ -25,6 +26,7 @@
         "NeonRight": false
       },
       "InteriorColorIndex": 132,
+      "Livery": -1,
       "ModelHash": 1483171323,
       "Name": "Unknown [Deluxo]",
       "NeonColor": {
@@ -36,11 +38,12 @@
       "NumberPlateText": "85LZH167",
       "PearlesentColorIndex": 18,
       "PrimaryColor": {
-        "b": 59,
-        "g": 64,
-        "r": 69
+        "b": 26,
+        "g": 30,
+        "r": 33
       },
       "PrimaryColorIndex": 117,
+      "RoofLivery": 0,
       "SecondaryColor": {
         "b": 26,
         "g": 30,
@@ -105,12 +108,16 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": 0,
-      "WheelVariations": [-1, -1],
+      "WheelVariations": [
+        -1,
+        -1
+      ],
       "WindowTint": 0
     },
     {
       "DashboardColorIndex": 111,
-      "EnvEffScale": -1.0,
+      "DriftTyres": false,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -133,6 +140,7 @@
         "NeonRight": true
       },
       "InteriorColorIndex": 0,
+      "Livery": -1,
       "ModelHash": -726768679,
       "Name": "Sea Sparrow (maxed)",
       "NeonColor": {
@@ -144,11 +152,12 @@
       "NumberPlateText": "W200",
       "PearlesentColorIndex": 158,
       "PrimaryColor": {
-        "b": 119,
-        "g": 124,
-        "r": 135
+        "b": 28,
+        "g": 30,
+        "r": 33
       },
       "PrimaryColorIndex": 158,
+      "RoofLivery": 0,
       "SecondaryColor": {
         "b": 28,
         "g": 30,
@@ -213,12 +222,16 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": 9,
-      "WheelVariations": [1, 1],
+      "WheelVariations": [
+        1,
+        1
+      ],
       "WindowTint": 0
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": -1.0,
+      "DriftTyres": false,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": true,
@@ -241,6 +254,7 @@
         "NeonRight": true
       },
       "InteriorColorIndex": 0,
+      "Livery": -1,
       "ModelHash": 353883353,
       "Name": "Police Maverick (maxed)",
       "NeonColor": {
@@ -257,10 +271,11 @@
         "r": 255
       },
       "PrimaryColorIndex": 158,
+      "RoofLivery": 0,
       "SecondaryColor": {
-        "b": 8,
-        "g": 8,
-        "r": 8
+        "b": 255,
+        "g": 255,
+        "r": 255
       },
       "SecondaryColorIndex": 158,
       "TyreSmokeColor": {
@@ -321,12 +336,16 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": 9,
-      "WheelVariations": [1, 1],
+      "WheelVariations": [
+        1,
+        1
+      ],
       "WindowTint": 1
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": -1.0,
+      "DriftTyres": false,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": true,
@@ -349,6 +368,7 @@
         "NeonRight": true
       },
       "InteriorColorIndex": 0,
+      "Livery": -1,
       "ModelHash": 1938952078,
       "Name": "Unknown [Fire Truck]",
       "NeonColor": {
@@ -365,6 +385,7 @@
         "r": 5
       },
       "PrimaryColorIndex": 12,
+      "RoofLivery": 0,
       "SecondaryColor": {
         "b": 5,
         "g": 5,
@@ -429,12 +450,16 @@
       ],
       "WheelColorIndex": 0,
       "WheelType": -1,
-      "WheelVariations": [-1, -1],
+      "WheelVariations": [
+        -1,
+        -1
+      ],
       "WindowTint": 0
     },
     {
       "DashboardColorIndex": 0,
-      "EnvEffScale": -1.0,
+      "DriftTyres": false,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,
@@ -457,6 +482,7 @@
         "NeonRight": true
       },
       "InteriorColorIndex": 0,
+      "Livery": -1,
       "ModelHash": 736902334,
       "Name": "Unknown [Buffalo S (maxed)]",
       "NeonColor": {
@@ -473,6 +499,7 @@
         "r": 240
       },
       "PrimaryColorIndex": 158,
+      "RoofLivery": 0,
       "SecondaryColor": {
         "b": 240,
         "g": 240,
@@ -537,7 +564,10 @@
       ],
       "WheelColorIndex": 156,
       "WheelType": 9,
-      "WheelVariations": [1, 1],
+      "WheelVariations": [
+        1,
+        1
+      ],
       "WindowTint": 1
     }
   ]

@@ -1558,6 +1558,7 @@ local VehicleHashValues = {
     540101442, -- zr380
     758895617 -- ztype
 }
+-- Function definitions
 local Tsk=1 			--On Admin Detection; 1-DoARoundabout, 2-JoinPublic, 3-EmptySession
 local ChSs=nil			--ChangeSession Hotkey, nil to disable
 local EmSs=19 --Pause|Break key	--EmptySession Hotkey, nil to disable
@@ -1665,8 +1666,9 @@ local function GetVehicleNameByHash(hash)
 	for i = 1, #VehicleHashValues do
 		if VehicleHashValues[i] == hash then return VehicleHashNames[i] end
 	end
-	return "Vehicle"
+	return "Unknown Vehicle"
 end
+ 
 -- Action functions
 local function TeleportToPlayer(ply, seconds)
 	if not ply or ply == nil then return end 
@@ -1822,24 +1824,25 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 		text = text.." | God"
 	end
 	if ply:is_in_vehicle() then
-		local veh = ply:get_current_vehicle()
-		if veh ~= nil then
-			local veh_hash = veh:get_model_hash()
-			if veh_hash ~= nil then
-				local veh_name = GetVehicleNameByHash(veh_hash)
-				if veh_name ~= nil then
-					text = text.." | "..veh_name
+		if ply:get_current_vehicle():get_godmode() then
+			text = text.." | VehGod"
+		else
+			local veh = ply:get_current_vehicle()
+			if veh ~= nil then
+				local veh_hash = veh:get_model_hash()
+				if veh_hash ~= nil then
+					local veh_name = GetVehicleNameByHash(veh_hash)
+					if veh_name ~= nil then
+						text = text.." | "..veh_name
+					else
+						text = text.." | Vehicle"
+					end
 				else
 					text = text.." | Vehicle"
 				end
 			else
 				text = text.." | Vehicle"
 			end
-			if veh:get_godmode() then
-				text = text.."*"
-			end
-		else
-			text = text.." | Vehicle"
 		end
 	end
 
@@ -2074,30 +2077,30 @@ local moreinfo=playerlist:add_submenu("More info on player")
 	moreinfo:add_int_range("Damage Type", 0, 0, 0, function()
 		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_damage_type() end end, function() end)
 
-
-local playerflags=playerlist:add_submenu("Player Flags")
-	local function ply() return player.get_player_ped(selectedplayer) end
-	local function hasConfigFlag(flag)
-		_player = ply()
-		if _player == nil or flag == nil then return false end
-		return _player:get_config_flag(flag)
-	end
-	local function setConfigFlag(flag, v)
-		_player = ply()
-		if _player ~= nil and flag ~= nil then _player:set_config_flag(flag, v) end
-	end
-	local function add_flag_toggle(name, flag)
-		if name == nil or flag == nil then return end
-		playerflags:add_toggle(name, function() return hasConfigFlag(flag) end, function(v) setConfigFlag(flag, v) end)
-	end
-	for i = 1, #PedConfigFlagNames do
-		add_flag_toggle(""..PedConfigFlagNames[i], PedConfigFlagValues[i])
-	end
+-- local playerflags=playerlist:add_submenu("Player Flags")
+-- 	local function ply() return player.get_player_ped(selectedplayer) end
+-- 	local function hasConfigFlag(flag)
+-- 		_player = ply()
+-- 		if _player == nil or flag == nil then return false end
+-- 		return _player:get_config_flag(flag)
+-- 	end
+-- 	local function setConfigFlag(flag, v)
+-- 		_player = ply()
+-- 		if _player ~= nil and flag ~= nil then _player:set_config_flag(flag, v) end
+-- 	end
+-- 	local function add_flag_toggle(name, flag)
+-- 		if name == nil or flag == nil then return end
+-- 		playerflags:add_toggle(name, function() return hasConfigFlag(flag) end, function(v) setConfigFlag(flag, v) end)
+-- 	end
+-- 	for i = 1, #PedConfigFlagNames do
+-- 		add_flag_toggle(""..PedConfigFlagNames[i], PedConfigFlagValues[i])
+-- 	end
 
 end
 
+
 -- List Updater
-menu.add_bare_item("         Reload Player List", function() playerlist:clear() BuildListOld() end, null, null, null)
+-- playerlist.add_bare_item("Reload List", function() playerlist:clear() BuildListOld() end, null, null, null)
 
 
 
