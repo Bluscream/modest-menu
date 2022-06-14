@@ -1558,164 +1558,249 @@ local VehicleHashValues = {
     540101442, -- zr380
     758895617 -- ztype
 }
+local Tsk=1 			--On Admin Detection; 1-DoARoundabout, 2-JoinPublic, 3-EmptySession
+local ChSs=nil			--ChangeSession Hotkey, nil to disable
+local EmSs=19 --Pause|Break key	--EmptySession Hotkey, nil to disable
+local enable = false  --ExplodeLoop hotkey default(on/off>true/false)
+local TL=105			--TrollLoop hotkey, Numpad9
+
+local SsTy=1575012		--v1.60 Session Type
+local SsTr=1574589		--v1.60 Session Trigger
+local CrVh=2725269		--Create Vehicle Offset
+
+local admins={ "Spacer-galore", "Fortune_Cukie", "Laurie_Williams", "RollD20", "SecretWizzle54", "Wawaweewa_I_Like", "BackBoyoDrill",
+	"NoAuthorityHere", "ScentedString", "CapnZebraZorse", "godlyGoodestBoi", "whiskylifter", "pigeon_nominate", "SlightlyEvilHoss",
+	"ChangryMonkey", "StompoGrande", "x_Shannandoo_x", "Long-boi-load", "NootN0ot", "applecloning", "BeoMonstarh", "BlobbyFett22",
+	"ExoSnowBoarder", "ExtremeThanks15", "BailMail99", "ForrestTrump69", "KingOfGolf", "KrustyShackles", "PassiveSalon", "PearBiscuits34",
+	"SlowMoKing", "Smooth_Landing", "SuperTrevor123", "Tamehippo", "Thrillhouse12", "LazingLion", "KorruptUserDayta", "LivelyCommanderS",
+	"FishingFissures", "uwu-bend", "VickDMF", "AlpacaBarista", "The_Real_Harambe", "Flares4Lyfe", "BinnyAndTheJets", "VinnyPetrol",
+	"LazerGameBounce", "FluteOfMilton", "PipPipJongles", "YUyu-lampon", "DeadOnAir", "Dumptruck42168", "Poppernopple", "KrunchyCh1cken",
+	"BlessedChu", "Surgeio", "WindmillDuncan", "Wanted_Sign42", "Paulverines", "ZombieTom66", "st1nky_p1nky", "OilyLordAinsley",
+	"FruitPuncher15", "PisswasserMax", "BanSparklinWater", "BrucieJuiceyIV", "RapidRaichu", "kingmario11", "DigitalFox9",
+	"CheeesesteakPhil", "FoxesAreCool69", "SweetPlumbus", "NotSweetPlumbus", "IM-_-Wassup", "WickedFalcon4054", "aquabull",
+	"Ghostofwar1", "DAWNBILLA", "Aur3lian", "JulianApost4te", "DarkStar7171", "xCuteBunny", "random_123", "SheddingYeti",
+	"random123", "flyingcobra16", "CriticalRegret", "ScentedPotter", "Huginn5", "Sonknuck-", "HammerDaddy69", "johnet123",
+	"bipolarcarp", "jakw0lf", "Kakorot02", "CrazyCatPilots", "G_ashman", "Rossthetic", "StrongBelwas1", "vulconn", "TonyMSD1",
+	"AMoreno14", "PayneInUrAbs", "shibuz_gamer123", "M1thras", "Th3_Morr1gan", "Z3ro_Chill", "Titan261", "Coffee_Collie", "YellingRat",
+	"BananaGod951", "RDR_Dev", "FecundWolf", "trajan5", "thewho146", "Bangers_RSG", "Bash_RSG", "Bubblez_RSG", "ramendingo", "ChefRSG",
+	"Chunk_RSG", "HotTub_RSG", "JPEGMAFIA_RSG", "Klang_RSG", "Lean1_RSG", "Ton_RSG", "RSGWolfman", "TheUntamedVoid", "TylerTGTAB",
+	"Wilted_spinach", "DannSw", "RSGINTJoe", "RSGGuestV", "RSGGuest50", "RSGGuest40", "Logic_rsg", "RSGGuest12", "RSGGuest7",
+	"ScottM_RSG", "Rockin5", "MonkeyViking", "Anghard07", "playrockstar6", "PlayRockstar5", "PlayRockstar1", "Player8_RSG",
+	"Player7_RSG", "MaxPayneDev16", "MaxPayneDev15", "MaxPayneDev14", "MaxPayneDev13", "MaxPayneDev12", "MaxPayneDev11",
+	"MaxPayneDev10", "MaxPayneDev9", "MaxPayneDev8", "MaxPayneDev7", "MaxPayneDev6", "MaxPayneDev5", "MaxPayneDev4", "MaxPayneDev3",
+	"MaxPayneDev2", "MaxPayneDev1", "MaxPayne3Dev12", "MaxPayne3Dev11", "MaxPayne3Dev9", "GTAdev4", "GTAdev3" }
+	
+-- On Admin Detection
+local nme=0
+local function ondetect()
+	if Tsk==2 then ChangeSession()
+	elseif Tsk==3 then EmptySession()
+	else if nme~=adm then nme=adm
+	menu.send_key_press(157)
+end end end
+local function ChangeSession()
+	globals.set_int(SsTy, 0)
+	globals.set_int(SsTr, 1)
+	sleep(0.01)
+	globals.set_int(SsTr, 0)
+	nme=0
+end
+if Hkey1 then menu.remove_hotkey(Hkey1) end
+if ChSs then Hkey1=menu.register_hotkey(ChSs, ChangeSession) end
+local function EmptySession()
+	menu.empty_session() nme=0
+end
+if Hkey2 then menu.remove_hotkey(Hkey1) end
+if EmSs then Hkey2=menu.register_hotkey(EmSs, EmptySession) end
+
 -- Function definitions
- 
-local function Text(text)
-	menu.add_action(text, function() end)
+local function null() end
+local function Text(submenu, text)
+	if (submenu ~= nil) then
+		submenu:add_action(text, null)
+	else
+		menu.add_action(text, null)
+	end
 end
- 
-local function sqrt(i)
-	return i^0.5
-end
- 
-local function DistanceToSqr(vec1, vec2)
-	return ((vec2.x - vec1.x)^2) + ((vec2.y - vec1.y)^2) + ((vec2.z - vec1.z)^2)
-end
- 
+
 local function Distance(vec1, vec2)
-	return sqrt(DistanceToSqr(vec1, vec2))
-end
- 
-local function floor(num)
-	local str = num//1 .. ""
-	-- if str:sub(-2) == ".0" then
-		-- str = str:sub(1,-3)
-	-- end
-
-	return str
+	return math.sqrt(((vec2.x - vec1.x)^2) + ((vec2.y - vec1.y)^2) + ((vec2.z - vec1.z)^2))
 end
 
--- local function pairs(t)
--- 	local i = 0
--- 	return function() i = i + 1; return t[i] end
--- end
- 
--- Player / Ped functions
- 
+-- Player Info
 local function IsPlayer(ped)
 	if ped == nil or ped:get_pedtype() >= 4 then
 		return false
 	end
 	return true
 end
- 
 local function IsNPC(ped)
 	if ped == nil or ped:get_pedtype() < 4 then
 		return false
 	end
 	return true
 end
- 
+local function PlyVeh(veh)
+	for i = 0, 31 do
+		ply = player.get_player_ped(i)
+		if ply then if ply:get_current_vehicle()==veh then
+		return true else return false end end
+	end
+end
 local function IsModder(ply)
 	if not IsPlayer(ply) then return false end
-	
-	if ply:get_max_health() > 100 then return true end -- <
+	if ply:get_max_health() < 100 then return true end
 	if ply:is_in_vehicle() and ply:get_godmode() then return true end
 	if ply:get_run_speed() > 1.0 or ply:get_swim_speed() > 1.0 then return true end
- 
+	if ply:get_infinite_clip()then return true end --Infinit clip
+	if ply:get_no_ragdoll() then return true end --No ragdoll
+	if ply:get_seatbelt() and ply:is_in_vehicle() then return true end
+	if ply:get_current_weapon() and ply:get_current_weapon():get_current_ammo() > 0 and ply:get_infinite_ammo() then return true end --Infinite ammo
 	return false
 end
- 
-local function GetPlayerIndex(pl)
-	local index = 1
-	for ply in replayinterface.get_peds() do
-		if IsPlayer(ply) then
-			if pl == ply then
-				return index
-			end
-			index = index + 1
-		end
-	end
-	return 0
-end
- 
-local function GetPlayerByArrayIndex(num)
-	local index = 1
-	for ply in replayinterface.get_peds() do
-		if IsPlayer(ply) then
-			if index == num then
-				return ply
-			end
-			index = index + 1
-		end
-	end
-	return nil
-end
- 
 local function GetPlayerCount()
-	local playercount = 0
-	for ped in replayinterface.get_peds() do
-		if IsPlayer(ped) then 
-			playercount = playercount + 1
-		end
-	end
-	return playercount
+	return player.get_number_of_players()
 end
-
 local function GetVehicleNameByHash(hash)
 	for i = 1, #VehicleHashValues do
 		if VehicleHashValues[i] == hash then return VehicleHashNames[i] end
 	end
-	return "Unknown"
+	return "Vehicle"
 end
- 
 -- Action functions
- 
-local function TeleportToPlayer(ply)
+local function TeleportToPlayer(ply, seconds)
 	if not ply or ply == nil then return end 
- 
 	local pos = ply:get_position()
+	if seconds then
+		if localplayer:is_in_vehicle() then return end
  
+		local oldpos = localplayer:get_position()
+		localplayer:set_position(pos)
+		sleep(seconds)
+		localplayer:set_freeze_momentum(true) 
+		localplayer:set_config_flag(292,true)
+		localplayer:set_position(oldpos)
+		localplayer:set_freeze_momentum(false) 
+		localplayer:set_config_flag(292,false)
+		return
+	end
 	if not localplayer:is_in_vehicle() then
-		-- localplayer:set_position(pos)
+		localplayer:set_position(pos)
 	else
-		-- localplayer:get_current_vehicle():set_position(pos)
+		localplayer:get_current_vehicle():set_position(pos)
 	end
 end
- 
-local function TeleportVehiclesToPlayer(ply)
-	if not ply or ply == nil then return end 
- 
-	local pos = ply:get_position()
-	local currentvehicle = nil 
- 
-	if localplayer:is_in_vehicle() then
-		currentvehicle = localplayer:get_current_vehicle()
-	end
- 
-	for veh in replayinterface.get_vehicles() do
-		if not currentvehicle or currentvehicle ~= veh then
-			veh:set_position(pos)
-		end
-	end
+
+local function TeleportClosestVehicleToPlayer(ply)
+	if not ply or ply == nil then return end
+	pos2=ply:get_position()
+	sleep(0.1)
+	pos1=ply:get_position()
+	disX=(pos1.x-pos2.x) disY=(pos1.y-pos2.y) disZ=(pos1.z-pos2.z)
+	local veh = localplayer:get_nearest_vehicle()
+	if not veh or localplayer:get_nearest_vehicle()==localplayer:get_current_vehicle() then return end
+	veh:set_position(ply:get_position()+vector3(2*disX, 2*disY, disZ))
 end
  
-local function TeleportPedsToPlayer(ply)
-	if not ply or ply == nil then return end 
- 
-	local pos = ply:get_position()
+local function TeleportPedsToPlayer(ply, dead)
+	if not ply or ply == nil then return end
+	pos2=ply:get_position()
+	sleep(0.1)
+	pos1=ply:get_position()
+	disX=(pos1.x-pos2.x) disY=(pos1.y-pos2.y) disZ=(pos1.z-pos2.z)
 	for ped in replayinterface.get_peds() do
 		if IsNPC(ped) then
-			ped:set_position(pos)
+			if not ped:is_in_vehicle() then
+				ped:set_position(ply:get_position()+vector3(2*disX, 2*disY, disZ))
+			end
 		end
 	end
 end
  
 local function ExplodePlayer(ply)
-	if not ply or ply == nil then return end 
- 
-	local pos = ply:get_position()
+	if not ply or ply == nil then return end
+	pos2=ply:get_position()
+	sleep(0.1)
+	pos1=ply:get_position()
+	disX=(pos1.x-pos2.x) disY=(pos1.y-pos2.y) disZ=(pos1.z-pos2.z)
 	local currentvehicle = nil 
- 
 	if localplayer:is_in_vehicle() then
 		currentvehicle = localplayer:get_current_vehicle()
 	end
- 
 	for veh in replayinterface.get_vehicles() do
 		if not currentvehicle or currentvehicle ~= veh then
+		if not PlyVeh(veh) then
+			acc=veh:get_acceleration()
+			veh:set_acceleration(0)
 			veh:set_rotation(vector3(0,0,180))
 			veh:set_health(-1)
-			veh:set_position(pos)
+			veh:set_position(ply:get_position()+vector3(disX, disY, disZ))
+			veh:set_acceleration(acc)
+		end
+		end
+	end
+end
+ 
+local function LaunchPlayer(ply)
+	if not ply or ply == nil then return end
+	pos2=ply:get_position()
+	sleep(0.1)
+	pos1=ply:get_position()
+	disX=(pos1.x-pos2.x) disY=(pos1.y-pos2.y) disZ=(pos1.z-pos2.z)
+	local currentvehicle = nil 
+	if localplayer:is_in_vehicle() then
+		currentvehicle = localplayer:get_current_vehicle()
+	end
+	local i = 0
+	for veh in replayinterface.get_vehicles() do
+		if not currentvehicle or currentvehicle ~= veh then
+		if not PlyVeh(veh) then
+			acc=veh:get_acceleration()
+			veh:set_acceleration(0)
+			veh:set_rotation(vector3(0,0,0))
+			veh:set_gravity(-100)
+			veh:set_position(ply:get_position()+vector3(2.5*disX, 2.5*disY, disZ-5))
+			veh:set_acceleration(acc)
+		end
+		end
+	end
+	sleep(1)
+	for veh in replayinterface.get_vehicles() do
+		if not currentvehicle or currentvehicle ~= veh then
+			veh:set_gravity(9.8)
+		end
+	end
+end
+ 
+local function SlamPlayer(ply)
+	if not ply or ply == nil then return end
+	pos2=ply:get_position()
+	sleep(0.1)
+	pos1=ply:get_position()
+	disX=(pos1.x-pos2.x) disY=(pos1.y-pos2.y) disZ=(pos1.z-pos2.z)
+	local currentvehicle = nil 
+	if localplayer:is_in_vehicle() then
+		currentvehicle = localplayer:get_current_vehicle()
+	end
+	local i = 0
+	for veh in replayinterface.get_vehicles() do
+		if not currentvehicle or currentvehicle ~= veh then
+		if not PlyVeh(veh) then
+			acc=veh:get_acceleration()
+			veh:set_acceleration(0)
+			veh:set_rotation(vector3(0,0,0))
+			veh:set_gravity(10000)
+			veh:set_position(ply:get_position()+vector3(5*disX, 5*disY, disZ + 100))
+			veh:set_acceleration(acc)
+		end
+		end
+	end
+	sleep(1)
+	for veh in replayinterface.get_vehicles() do
+		if not currentvehicle or currentvehicle ~= veh then
+		if not ply:get_current_vehicle() or ply:get_current_vehicle() ~= veh then
+			veh:set_gravity(9.8)
+		end
 		end
 	end
 end
@@ -1723,155 +1808,296 @@ end
 -- Player option 
 local selectedplayer = -1
  
-local function add_player_option(ply)
-	local index = GetPlayerIndex(ply)
-	
-	local text = index..":"
- 
-	-- Player ID
+local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
+	local text = ""
 	if ply == localplayer then
-		text = text.." YOU"
+		text = text.."YOU"
 	else
-        local pyd = ply:get_player_id()
-        if pyd ~= nil and player.get_player_name(pyd) ~= nil then
-            text = text.." "..player.get_player_name()
-        else
-            text = text.." Player "..pyd
-        end
-    end
- 
+		text = text..ply_name
+	end
 	if IsModder(ply) then
-		text = text.."*"
+		text = text.." MODDER"
 	end
- 
-	text = text.." -"
- 
-	text = text.." "..floor(ply:get_health())
-
-	-- Is In GodMode, if not then Player Health
-	text = text.."HP"
 	if ply:get_godmode() then
-		text = text.."+"
+		text = text.." | God"
 	end
- 
-	-- Is In Vehicle
 	if ply:is_in_vehicle() then
 		local veh = ply:get_current_vehicle()
 		if veh ~= nil then
-			local hash = veh:get_model_hash()
-			if hash ~= nil then
-				text = text.." | "..GetVehicleNameByHash(hash)
+			local veh_hash = veh:get_model_hash()
+			if veh_hash ~= nil then
+				local veh_name = GetVehicleNameByHash(veh_hash)
+				if veh_name ~= nil then
+					text = text.." | "..veh_name
+				else
+					text = text.." | Vehicle"
+				end
+			else
+				text = text.." | Vehicle"
 			end
-		end
-	end
- 
-	-- Player Wanted Level
-	text = text.." | "..ply:get_wanted_level().."*"
- 
-	-- Player's Distance From You
-	text = text.." | "..floor(Distance(ply:get_position(), localplayer:get_position())).."m"
- 
-	local d = index
- 
-	menu.add_toggle(text, function()
-		if selectedplayer == d then
-			return true
+			if veh:get_godmode() then
+				text = text.."*"
+			end
 		else
-			return false
+			text = text.." | Vehicle"
 		end
-	end, function(val)
-		selectedplayer = d
-	end)
-end
+	end
 
-local function hasConfigFlag(flag)
-	player = GetPlayerByArrayIndex(selectedplayer)
-	if player == nil or flag == nil then return false end
-	return player:get_config_flag(flag)
-end
-local function setConfigFlag(flag, v)
-	player = GetPlayerByArrayIndex(selectedplayer)
-	if player ~= nil and flag ~= nil then player:set_config_flag(flag, v) end
-end
-local function add_flag_toggle(name, flag)
-	if name == nil or flag == nil then return end
-	menu.add_toggle(name, function() return hasConfigFlag(flag) end, function(v) setConfigFlag(flag, v) end)
+	-- Player's Distance From You
+	text = text.." | "..math.floor(Distance(ply:get_position(), localplayer:get_position())).." m"
+	
+	return text
 end
  
--- Building Player List
-
-Text("= Player List ("..GetPlayerCount()..") =") -- by AppleVegas
-
-local function IsInArray(arr, val)
-	for i = 1, #arr do
-		if arr[i] == val then return true end
-	end 
-	return false 
-end
+local function add_player_option(submenu, ply_id, ply, ply_name)
+	local text = f_p_o(ply_id, ply, ply_name)
+	local d = ply_id
  
-local PlayersDistances = {}
-local SortedPlayers = {}
- 
-local i = 1
-for ply in replayinterface.get_peds() do
-	if IsPlayer(ply) then 
-		PlayersDistances[i] = {ply, DistanceToSqr(ply:get_position(), localplayer:get_position())}
-		i = i + 1
+	if (submenu ~= nil) then
+		submenu:add_bare_item(text, function() return f_p_o(ply_id, ply, ply_name).."|"..(selectedplayer == ply_id and "✓" or "□")  end, function() selectedplayer = d end, null, null)
+	else
+		menu.add_bare_item(text, function() return f_p_o(ply_id, ply, ply_name).."|"..(selectedplayer == ply_id and "✓" or "□") end, function() selectedplayer = d end, null, null)
 	end
 end
  
-for c = 1, i do
-	local smallest = {nil, nil}
-	for plyd = 1, #PlayersDistances do
-		if not IsInArray(SortedPlayers, PlayersDistances[plyd][1]) then 
-			if smallest[2] == nil or PlayersDistances[plyd][2] <= smallest[2] then
-				smallest = PlayersDistances[plyd]
+local function add_info_option(submenu, text, funcget, forceplayer)
+	local func = function() 
+		local ply = player.get_player_ped(forceplayer and forceplayer or selectedplayer)
+		if not ply then return text..": **Invalid**" end
+		return text..": "..funcget(ply)
+	end
+	if (submenu ~= nil) then
+		submenu:add_bare_item(text..": ", func, null, null, null)
+	else
+		menu.add_bare_item(text..": ", func, null, null, null)
+	end
+end
+
+-- TrollLoop
+local mpx = stats.get_int("MPPLY_LAST_MP_CHAR")
+local function switch()
+	if selectedplayer==nil then return end
+	if stats.get_int("MP"..mpx.."_H4LOOT_WEED_I_SCOPED") == 0 then
+		stats.set_int("MP"..mpx.."_H4LOOT_WEED_I_SCOPED", 8192)
+		globals.set_int(CrVh+27+6, selectedplayer)
+		sleep(1.0)
+		menu.send_key_press(155)
+	else
+		stats.set_int("MP"..mpx.."_H4LOOT_WEED_I_SCOPED", 0)
+	end
+end
+if Exploop then menu.remove_hotkey(Exploop) end
+local Exploop=nil
+if enable then
+	Exploop = menu.register_hotkey(TL, switch)
+end
+local function LooP(e)
+	if e then
+		Exploop = menu.register_hotkey(TL, switch)
+	else
+		menu.remove_hotkey(Exploop)
+		stats.set_int("MP"..mpx.."_H4LOOT_WEED_I_SCOPED", 0)
+		globals.set_int(CrVh+27+6, 0)
+	end
+end
+menu.add_toggle("TrollLoop(NUM9)", function()
+	return enable
+end, function()
+	enable = not enable 
+	LooP(enable)
+end)
+
+-- Building Player List
+local playerlist = menu.add_submenu("Players")
+local adm=""
+local function BuildListOld()
+	Text(playerlist, "---AppleVegas's Player List, "..GetPlayerCount().." Players---")
+	for i = 0, 31 do
+		local ply = player.get_player_ped(i)
+		if ply then 
+			add_player_option(playerlist, i, ply, player.get_player_name(i))
+			admin=player.get_player_name(i)
+			for x=1, #admins do
+				if admin==admins[x] then
+					adm="[ Admin>"..admin.." ]"
+					ondetect()
+				end
 			end
 		end
 	end
-	SortedPlayers[c] = smallest[1]
+	Text(playerlist, "    ---End---"..adm)
+	playerlist:add_array_item("On Admin Detection>", {"Do a roundabout", "Change Session", "Empty Session"}, function() return Tsk end,
+	function(d) Tsk=d ondetect() end)
+ 	add_info_option(playerlist, "Selected Player>", function() return player.get_player_name(selectedplayer) end)
+	
+	-- Troll Options
+	local LTr
+	local function LTro()
+		if LTr == nil then
+			return 1
+		else
+			return LTr
+		end
+	end
+	local TrOp = {}
+	TrOp[1] = "Explotion"
+	TrOp[2] = "Anti-Gravity"
+	TrOp[3] = "Slamming"
+	playerlist:add_array_item("Troll by>", TrOp, function() return LTro() end, function(Trll)
+		LTr=Trll
+		if Trll == 1 then
+			ExplodePlayer(player.get_player_ped(selectedplayer))
+		elseif Trll == 2 then
+			LaunchPlayer(player.get_player_ped(selectedplayer))
+		else
+			SlamPlayer(player.get_player_ped(selectedplayer))
+		end
+	end)
+	
+	--Teleport Options
+	playerlist:add_int_range("Peek for(seconds)", 2, 1, 10, function() return 2 end, function(n) TeleportToPlayer(player.get_player_ped(selectedplayer), n) end)
+	
+	local LGf
+	local function LsGft()
+		if LGf == nil then
+			return 2
+		else
+			return LGf
+		end
+	end
+	local OlPos
+	local Used
+ 	local TPOp = {}
+	TPOp[1] = "Yourself"
+	TPOp[2] = "Closest Vehicle"
+	TPOp[3] = "Peds"
+	playerlist:add_array_item("Send to player>", TPOp, function() return LsGft() end, function(LsTP)
+		LGf=LsTP
+		if LsTP == 1 then
+			if Used==1 or Used==nil then
+				OlPos=localplayer:get_position()
+				Used=0
+			end
+			TeleportToPlayer(player.get_player_ped(selectedplayer))
+		elseif LsTP == 2 then
+			TeleportClosestVehicleToPlayer(player.get_player_ped(selectedplayer))
+		elseif LsTP == 3 then 
+			TeleportPedsToPlayer(player.get_player_ped(selectedplayer))
+		end
+	end)
+	playerlist:add_action("Teleport back", function()
+		if OlPos~=nil then
+			if not localplayer:is_in_vehicle() then
+				localplayer:set_position(OlPos)
+			else
+				localplayer:get_current_vehicle():set_position(Olpos)
+			end
+			if localplayer:get_position()==OlPos then
+				Used=1
+			end
+		end
+	end)
+
+
+local moreinfo=playerlist:add_submenu("More info on player")
+	local function ply() return player.get_player_ped(selectedplayer) end
+	local TR={} TR[1]="Yes" TR[0]="No"
+	moreinfo:add_float_range("MaxHealth", 0, 0, 0, function()
+		if ply() then return ply():get_max_health() end end, function() end)
+	moreinfo:add_float_range("Health", 0, 0, 0, function()
+		if ply() then return ply():get_health() end end, function() end)
+	moreinfo:add_float_range("Armour", 0, 0, 0, function()
+		if ply() then return ply():get_armour() end end, function() end)
+	moreinfo:add_float_range("Run Speed", 0, 0, 0, function()
+		if ply() then return ply():get_run_speed() end end, function() end)
+	moreinfo:add_float_range("Swim Speed", 0, 0, 0, function()
+		if ply() then return ply():get_swim_speed() end end, function() end)
+	moreinfo:add_int_range("Wanted level", 0, 0, 0, function()
+		if ply() then return ply():get_wanted_level() end end, function() end)
+	moreinfo:add_array_item("Can be targeted>", TR, function()
+		if ply() and ply():get_can_be_targeted() then return 1 else return 0 end end, function() end)
+	moreinfo:add_array_item("No ragdoll>", TR, function()
+		if ply() and ply():get_no_ragdoll() then return 1 else return 0 end end, function() end)
+		
+	moreinfo:add_action("            Vehicle Info(close range only)", function() end)
+	moreinfo:add_array_item("Seatbelt>", TR, function()
+		if ply() and ply():get_seatbelt() then return 1 else return 0 end end, function() end)
+	moreinfo:add_float_range("Gravity", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_gravity() end end, function() end)
+	moreinfo:add_float_range("Accelaration", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_acceleration() end end, function() end)
+	moreinfo:add_float_range("Max Speed", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_max_speed() end end, function() end)
+	moreinfo:add_float_range("Mass", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_mass() end end, function() end)
+	moreinfo:add_int_range("Bomb Count>", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_bomb_count() end end, function() end)
+	moreinfo:add_int_range("CounterMeasure Count>", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_countermeasure_count() end end, function() end)
+	moreinfo:add_float_range("Boost amount>", 0, 0, 0, function()
+		if ply() and ply():is_in_vehicle() then return ply():get_current_vehicle():get_boost() end end, function() end)
+	moreinfo:add_array_item("Boost is active>", TR, function()
+		if ply() and ply():is_in_vehicle() then if ply():get_current_vehicle():get_boost_active() then return 1 else return 0 end end end, function() end)
+	moreinfo:add_array_item("Can be targeted>", TR, function()
+		if ply() and ply():is_in_vehicle() then if ply():get_current_vehicle():get_can_be_targeted() then return 1 else return 0 end end end, function() end)
+	moreinfo:add_array_item("Visible Damage>", TR, function()
+		if ply() and ply():is_in_vehicle() then if ply():get_current_vehicle():get_can_be_visibly_damaged() then return 1 else return 0 end end end, function() end)
+	moreinfo:add_array_item("Window Damage>", TR, function()
+		if ply() and ply():is_in_vehicle() then if ply():get_current_vehicle():get_window_collisions_disabled() then return 0 else return 1 end end end, function() end)
+		
+	moreinfo:add_action("                     Weapon Info", function() end)
+		
+	moreinfo:add_array_item("Infinite Ammo>", TR, function()
+		if ply() and ply():get_infinite_ammo() then return 1 else return 0 end end, function() end)
+	moreinfo:add_array_item("Infinite Clip>", TR, function()
+		if ply() and ply():get_infinite_clip() then return 1 else return 0 end end, function() end)
+	moreinfo:add_int_range("Current Ammo", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_current_ammo() end end, function() end)
+	moreinfo:add_float_range("Reload time multiplier", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_reload_time_multiplier() end end, function() end)
+	moreinfo:add_float_range("Time between shots", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_time_between_shots() end end, function() end)
+	moreinfo:add_float_range("Range", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_range() end end, function() end)
+	moreinfo:add_float_range("Lock-On range", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_lock_on_range() end end, function() end)
+	moreinfo:add_float_range("Ped Hit Force", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_ped_force() end end, function() end)
+	moreinfo:add_float_range("Vehicle Hit Force", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_vehicle_force() end end, function() end)
+	moreinfo:add_float_range("Heli Hit Force", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_heli_force() end end, function() end)
+	moreinfo:add_int_range("Fire Type", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_fire_type() end end, function() end)
+	moreinfo:add_int_range("Explosion Type", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_explosion_type() end end, function() end)
+	moreinfo:add_int_range("Damage Type", 0, 0, 0, function()
+		if ply() and ply():get_current_weapon() then return ply():get_current_weapon():get_damage_type() end end, function() end)
+
+
+local playerflags=playerlist:add_submenu("Player Flags")
+	local function ply() return player.get_player_ped(selectedplayer) end
+	local function hasConfigFlag(flag)
+		_player = ply()
+		if _player == nil or flag == nil then return false end
+		return _player:get_config_flag(flag)
+	end
+	local function setConfigFlag(flag, v)
+		_player = ply()
+		if _player ~= nil and flag ~= nil then _player:set_config_flag(flag, v) end
+	end
+	local function add_flag_toggle(name, flag)
+		if name == nil or flag == nil then return end
+		playerflags:add_toggle(name, function() return hasConfigFlag(flag) end, function(v) setConfigFlag(flag, v) end)
+	end
+	for i = 1, #PedConfigFlagNames do
+		add_flag_toggle(""..PedConfigFlagNames[i], PedConfigFlagValues[i])
+	end
+
 end
- 
-for ply = 1, #SortedPlayers do
-	add_player_option(SortedPlayers[ply])
-end
 
-Text("= Player Options =")
-menu.add_action("[P] Teleport me to player", function() TeleportToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_action("[P] Teleport Vehicles to player", function() TeleportVehiclesToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_action("[P] Teleport Peds to player", function() TeleportPedsToPlayer(GetPlayerByArrayIndex(selectedplayer)) end)
-menu.add_action("[P] Explode player", function() ExplodePlayer(GetPlayerByArrayIndex(selectedplayer)) end)
+-- List Updater
+menu.add_bare_item("         Reload Player List", function() playerlist:clear() BuildListOld() end, null, null, null)
 
-for i = 1, #PedConfigFlagNames do
-	add_flag_toggle("[F] "..PedConfigFlagNames[i], PedConfigFlagValues[i])
-end
 
--- add_flag_toggle("[P] Tiny", PedConfigFlag.Shrink)
--- add_flag_toggle("[P] Freeze", PedConfigFlag.Freeze)
--- add_flag_toggle("[P] Keep engine running", PedConfigFlag.DisableStoppingVehEngine)
--- add_flag_toggle("[P] Don't start engine", PedConfigFlag.DisableStartingVehEngine)
--- add_flag_toggle("[P] Don't go to driver seat", PedConfigFlag.DisableShufflingToDriverSeat)
--- add_flag_toggle("[P] Can attack friendlies", PedConfigFlag.CanAttackFriendlies)
--- add_flag_toggle("[P] Die from ragdoll", PedConfigFlag.DiesByRagdoll)
- 
--- Info Panel
 
-Text("")
- 
-menu.add_toggle("Is Selected Player Valid", function()
-	if selectedplayer == -1 then return false end
-	if not IsPlayer(GetPlayerByArrayIndex(selectedplayer)) then return false end
-	return true 
-end, function() end)
- 
-menu.add_float_range("Distance To Selected Player", 1, 0, 0, function()
-	if selectedplayer == -1 then return 0 end
- 
-	local ply = GetPlayerByArrayIndex(selectedplayer)
- 
-	if not IsPlayer(ply) then return 0 end
- 
-	return floor(Distance(ply:get_position(), localplayer:get_position()))
-end, function() end)
- 
--- Text("")
