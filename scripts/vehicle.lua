@@ -16,6 +16,11 @@ local function OnVehicleChanged(oldVehicle, newVehicle)
 			-- menu.heal_vehicle()
 			newVehicle:set_godmode(true)
 			newVehicle:set_can_be_visibly_damaged(false)
+			newVehicle:set_window_collisions_disabled(true)
+			newVehicle:set_bouyance(1)
+			newVehicle:set_dirt_level(15)
+			newVehicle:set_max_speed(500)
+			newVehicle:set_window_tint(0)
 		end
 		if autoVehicleLicensePlate == true then
 			newVehicleHash = newVehicle:get_model_hash()
