@@ -1,3 +1,4 @@
+-- Made by AppleVegas
 local PedConfigFlagNames = {
 	"CanPunch", -- 18
 	"CanFlyThruWindscreen", -- 32
@@ -1813,10 +1814,10 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 	if ply == localplayer then
 		text = text.."YOU"
 	else
-		text = text..ply_name
+		text = text.."\""..ply_name.."\""
 	end
 	if IsModder(ply) then
-		text = text.." MODDER"
+		text = text.." [MOD]"
 	end
 	if ply:get_godmode() then
 		text = text.." | God"
@@ -1900,18 +1901,18 @@ local function LooP(e)
 		globals.set_int(CrVh+27+6, 0)
 	end
 end
-menu.add_toggle("TrollLoop(NUM9)", function()
-	return enable
-end, function()
-	enable = not enable 
-	LooP(enable)
-end)
+-- menu.add_toggle("TrollLoop(NUM9)", function()
+-- 	return enable
+-- end, function()
+-- 	enable = not enable 
+-- 	LooP(enable)
+-- end)
 
 -- Building Player List
-local playerlist = menu.add_submenu("Players")
+local playerlist = menu.add_submenu("--- PLAYER LIST ---")
 local adm=""
 local function BuildListOld()
-	Text(playerlist, "---AppleVegas's Player List, "..GetPlayerCount().." Players---")
+	Text(playerlist, "--- "..GetPlayerCount().." Players ---")
 	for i = 0, 31 do
 		local ply = player.get_player_ped(i)
 		if ply then 
@@ -1940,7 +1941,7 @@ local function BuildListOld()
 		end
 	end
 	local TrOp = {}
-	TrOp[1] = "Explotion"
+	TrOp[1] = "Explosion"
 	TrOp[2] = "Anti-Gravity"
 	TrOp[3] = "Slamming"
 	playerlist:add_array_item("Troll by>", TrOp, function() return LTro() end, function(Trll)
@@ -2097,7 +2098,7 @@ local playerflags=playerlist:add_submenu("Player Flags")
 end
 
 -- List Updater
-menu.add_bare_item("         Reload Player List", function() playerlist:clear() BuildListOld() end, null, null, null)
+menu.add_bare_item("Reload Player List", function() playerlist:clear() BuildListOld() end, null, null, null)
 
 
 
