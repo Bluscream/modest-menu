@@ -52,7 +52,7 @@ local function get_current_ped()
 end
 local function set_current_ped(hash)
 	print(tostring(hash))
-	player:set_ped_model(hash)
+	player_set_ped_model(hash)
 end
 print("2")
 menu_add_enum_range(PedHash, "Ped Model", false, set_current_ped, get_current_ped)

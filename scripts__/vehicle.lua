@@ -50,11 +50,10 @@ local function UnlockOwnDoor()
 	end
 end
 local function GetEngine()
-	if localplayer == nil then
-		return nil
-	else
-		return localplayer:is_in_vehicle()
+	if localplayer ~= nil and localplayer:is_in_vehicle() then
+		return localplayer:get_config_flag(241)
 	end
+	return false
 end
 local function SetEngine(value)
 	if localplayer ~= nil then

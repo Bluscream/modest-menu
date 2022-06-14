@@ -70,3 +70,9 @@ function table_invert(t)
     end
     return s
  end
+local function array_contains(arr, val)
+    for i = 1, #arr do
+        if arr[i] == val then return true end
+    end 
+    return false 
+end

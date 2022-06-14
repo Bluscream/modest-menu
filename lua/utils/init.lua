@@ -1,5 +1,8 @@
+print("=== lua/utils/init START ===")
+require ("utils/logger")
 require ("utils/math")
 require ("utils/table")
 require ("utils/player")
 require ("utils/vehicle")
 require ("utils/menu")
+print("=== lua/utils/init END ===")
