@@ -20,6 +20,17 @@ nil     globals.set_int(Integer index, Integer value)
 nil     globals.set_string(Integer index, String value, Integer maxSize)
 nil     globals.set_uint(Integer index, Integer value)
 
+Vector3 vector3(Number x, Number y, Number z)
+nil     menu.add_array_item(String name,
+                            table options,
+                            function getter --[[ Integer|nil function() ]],
+                            function setter --[[ nil function(Integer value) ]])
+nil     submenu:add_array_item(String name,
+                               table options,
+                               function getter --[[ Integer|nil function() ]],
+                               function setter --[[ nil function(Integer value) ]]) 
+Number  vehicle:get_steering_lock()
+nil     vehicle:set_steering_lock(Number value)
 
 ---------------------------------------
 -- Menu:

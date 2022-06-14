@@ -12,6 +12,9 @@ local function OnPlayerChanged(oldPlayer, newPlayer)
         end
         if menu ~= nil then
         	menu:detach_objects()
+            menu:set_bribe_authorities(true)
+            menu:set_cops_turn_blind_eye(true)
+            menu:set_reveal_player(true)
 		end
     end
 end

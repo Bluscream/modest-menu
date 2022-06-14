@@ -126,10 +126,10 @@ local function NoClip(e)
 	end
 end
  
-menu.register_hotkey(46, function()
-	enable = not enable 
-	NoClip(enable)
-end)
+-- menu.register_hotkey(46, function()
+-- 	enable = not enable 
+-- 	NoClip(enable)
+-- end)
  
 menu.add_toggle("NoClip", function()
 	return enable
