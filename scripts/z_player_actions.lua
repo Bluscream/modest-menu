@@ -89,27 +89,7 @@ local SsTy=1575012		--v1.60 Session Type
 local SsTr=1574589		--v1.60 Session Trigger
 local CrVh=2725269		--Create Vehicle Offset
 
-local admins={ "Spacer-galore", "Fortune_Cukie", "Laurie_Williams", "RollD20", "SecretWizzle54", "Wawaweewa_I_Like", "BackBoyoDrill",
-	"NoAuthorityHere", "ScentedString", "CapnZebraZorse", "godlyGoodestBoi", "whiskylifter", "pigeon_nominate", "SlightlyEvilHoss",
-	"ChangryMonkey", "StompoGrande", "x_Shannandoo_x", "Long-boi-load", "NootN0ot", "applecloning", "BeoMonstarh", "BlobbyFett22",
-	"ExoSnowBoarder", "ExtremeThanks15", "BailMail99", "ForrestTrump69", "KingOfGolf", "KrustyShackles", "PassiveSalon", "PearBiscuits34",
-	"SlowMoKing", "Smooth_Landing", "SuperTrevor123", "Tamehippo", "Thrillhouse12", "LazingLion", "KorruptUserDayta", "LivelyCommanderS",
-	"FishingFissures", "uwu-bend", "VickDMF", "AlpacaBarista", "The_Real_Harambe", "Flares4Lyfe", "BinnyAndTheJets", "VinnyPetrol",
-	"LazerGameBounce", "FluteOfMilton", "PipPipJongles", "YUyu-lampon", "DeadOnAir", "Dumptruck42168", "Poppernopple", "KrunchyCh1cken",
-	"BlessedChu", "Surgeio", "WindmillDuncan", "Wanted_Sign42", "Paulverines", "ZombieTom66", "st1nky_p1nky", "OilyLordAinsley",
-	"FruitPuncher15", "PisswasserMax", "BanSparklinWater", "BrucieJuiceyIV", "RapidRaichu", "kingmario11", "DigitalFox9",
-	"CheeesesteakPhil", "FoxesAreCool69", "SweetPlumbus", "NotSweetPlumbus", "IM-_-Wassup", "WickedFalcon4054", "aquabull",
-	"Ghostofwar1", "DAWNBILLA", "Aur3lian", "JulianApost4te", "DarkStar7171", "xCuteBunny", "random_123", "SheddingYeti",
-	"random123", "flyingcobra16", "CriticalRegret", "ScentedPotter", "Huginn5", "Sonknuck-", "HammerDaddy69", "johnet123",
-	"bipolarcarp", "jakw0lf", "Kakorot02", "CrazyCatPilots", "G_ashman", "Rossthetic", "StrongBelwas1", "vulconn", "TonyMSD1",
-	"AMoreno14", "PayneInUrAbs", "shibuz_gamer123", "M1thras", "Th3_Morr1gan", "Z3ro_Chill", "Titan261", "Coffee_Collie", "YellingRat",
-	"BananaGod951", "RDR_Dev", "FecundWolf", "trajan5", "thewho146", "Bangers_RSG", "Bash_RSG", "Bubblez_RSG", "ramendingo", "ChefRSG",
-	"Chunk_RSG", "HotTub_RSG", "JPEGMAFIA_RSG", "Klang_RSG", "Lean1_RSG", "Ton_RSG", "RSGWolfman", "TheUntamedVoid", "TylerTGTAB",
-	"Wilted_spinach", "DannSw", "RSGINTJoe", "RSGGuestV", "RSGGuest50", "RSGGuest40", "Logic_rsg", "RSGGuest12", "RSGGuest7",
-	"ScottM_RSG", "Rockin5", "MonkeyViking", "Anghard07", "playrockstar6", "PlayRockstar5", "PlayRockstar1", "Player8_RSG",
-	"Player7_RSG", "MaxPayneDev16", "MaxPayneDev15", "MaxPayneDev14", "MaxPayneDev13", "MaxPayneDev12", "MaxPayneDev11",
-	"MaxPayneDev10", "MaxPayneDev9", "MaxPayneDev8", "MaxPayneDev7", "MaxPayneDev6", "MaxPayneDev5", "MaxPayneDev4", "MaxPayneDev3",
-	"MaxPayneDev2", "MaxPayneDev1", "MaxPayne3Dev12", "MaxPayne3Dev11", "MaxPayne3Dev9", "GTAdev4", "GTAdev3" }
+local admins={ "Spacer-galore","Fortune_Cukie","Laurie_Williams","RollD20","SecretWizzle54","Wawaweewa_I_Like","BackBoyoDrill","NoAuthorityHere","ScentedString","CapnZebraZorse","godlyGoodestBoi","whiskylifter","pigeon_nominate","SlightlyEvilHoss","ChangryMonkey","StompoGrande","x_Shannandoo_x","Long-boi-load","NootN0ot","applecloning","BeoMonstarh","BlobbyFett22","ExoSnowBoarder","ExtremeThanks15","BailMail99","ForrestTrump69","KingOfGolf","KrustyShackles","PassiveSalon","PearBiscuits34","SlowMoKing","Smooth_Landing","SuperTrevor123","Tamehippo","Thrillhouse12","LazingLion","KorruptUserDayta","LivelyCommanderS","FishingFissures","uwu-bend","VickDMF","AlpacaBarista","The_Real_Harambe","Flares4Lyfe","BinnyAndTheJets","VinnyPetrol","LazerGameBounce","FluteOfMilton","PipPipJongles","YUyu-lampon","DeadOnAir","Dumptruck42168","Poppernopple","KrunchyCh1cken","BlessedChu","Surgeio","WindmillDuncan","Wanted_Sign42","Paulverines","ZombieTom66","st1nky_p1nky","OilyLordAinsley","FruitPuncher15","PisswasserMax","BanSparklinWater","BrucieJuiceyIV","RapidRaichu","kingmario11","DigitalFox9","CheeesesteakPhil","FoxesAreCool69","SweetPlumbus","NotSweetPlumbus","IM-_-Wassup","WickedFalcon4054","aquabull","Ghostofwar1","DAWNBILLA","Aur3lian","JulianApost4te","DarkStar7171","xCuteBunny","random_123","SheddingYeti","random123","flyingcobra16","CriticalRegret","ScentedPotter","Huginn5","Sonknuck-","HammerDaddy69","johnet123","bipolarcarp","jakw0lf","Kakorot02","CrazyCatPilots","G_ashman","Rossthetic","StrongBelwas1","vulconn","TonyMSD1","AMoreno14","PayneInUrAbs","shibuz_gamer123","M1thras","Th3_Morr1gan","Z3ro_Chill","Titan261","Coffee_Collie","YellingRat","BananaGod951","RDR_Dev","FecundWolf","trajan5","thewho146","Bangers_RSG","Bash_RSG","Bubblez_RSG","ramendingo","ChefRSG","Chunk_RSG","HotTub_RSG","JPEGMAFIA_RSG","Klang_RSG","Lean1_RSG","Ton_RSG","RSGWolfman","TheUntamedVoid","TylerTGTAB","Wilted_spinach","DannSw","RSGINTJoe","RSGGuestV","RSGGuest50","RSGGuest40","Logic_rsg","RSGGuest12","RSGGuest7","ScottM_RSG","Rockin5","MonkeyViking","Anghard07","playrockstar6","PlayRockstar5","PlayRockstar1","Player8_RSG","Player7_RSG","MaxPayneDev16","MaxPayneDev15","MaxPayneDev14","MaxPayneDev13","MaxPayneDev12","MaxPayneDev11","MaxPayneDev10","MaxPayneDev9","MaxPayneDev8","MaxPayneDev7","MaxPayneDev6","MaxPayneDev5","MaxPayneDev4","MaxPayneDev3","MaxPayneDev2","MaxPayneDev1","MaxPayne3Dev12","MaxPayne3Dev11","MaxPayne3Dev9","GTAdev4","GTAdev3"}
 	
 -- On Admin Detection
 local nme=0
@@ -334,13 +314,13 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 	if ply == localplayer then
 		text = text.."YOU"
 	else
-		text = text.."\""..ply_name.."\""
+		text = text..""..ply_name..""
 	end
 	if IsModder(ply) then
-		text = text.." [MOD]"
+		text = text.." | MOD"
 	end
 	if ply:get_godmode() then
-		text = text.." | God"
+		text = text.." | GOD"
 	end
 	if ply:is_in_vehicle() then
 		local veh = ply:get_current_vehicle()
@@ -433,19 +413,50 @@ local playerlist = menu.add_submenu("--- PLAYER LIST ---")
 local adm=""
 local function BuildListOld()
 	Text(playerlist, "--- "..GetPlayerCount().." Players ---")
+
+	-- test
+	local function IsInArray(arr, val)
+		for i = 1, #arr do
+			if arr[i] == val then return true end
+		end 
+		return false 
+	end
+	 
+	local PlayersDistances = {}
+	local SortedPlayers = {}
+	 
 	for i = 0, 31 do
 		local ply = player.get_player_ped(i)
 		if ply then 
-			add_player_option(playerlist, i, ply, player.get_player_name(i))
-			admin=player.get_player_name(i)
-			for x=1, #admins do
-				if admin==admins[x] then
-					adm="[ Admin>"..admin.." ]"
-					ondetect()
+			PlayersDistances[i] = {ply, Distance(ply:get_position(), localplayer:get_position())}
+			i = i + 1
+		end
+	end
+	 
+	for c = 1, i do
+		local smallest = {nil, nil}
+		for plyd = 1, #PlayersDistances do
+			if not IsInArray(SortedPlayers, PlayersDistances[plyd][1]) then 
+				if smallest[2] == nil or PlayersDistances[plyd][2] <= smallest[2] then
+					smallest = PlayersDistances[plyd]
 				end
 			end
 		end
+		SortedPlayers[c] = smallest[1]
 	end
+	 
+	for ply = 1, #SortedPlayers do
+		add_player_option(playerlist, ply, SortedPlayers[ply], player.get_player_name(ply))
+		admin=player.get_player_name(ply)
+		for x=1, #admins do
+			if admin==admins[x] then
+				adm="[ Admin>"..admin.." ]"
+				ondetect()
+			end
+		end
+	end
+	-- test
+
 	Text(playerlist, "    ---End---"..adm)
 	playerlist:add_array_item("On Admin Detection>", {"Do a roundabout", "Change Session", "Empty Session"}, function() return Tsk end,
 	function(d) Tsk=d ondetect() end)
