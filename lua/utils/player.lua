@@ -29,8 +29,8 @@ function player:is_modder(ply)
 	return false
 end
 function player:set_ped_model(hash)
-	globals.set_int(2671444+59, 1)
-	globals.set_int(2671444+46, hash)
+	globals.set_int(ChangeModelTrigger, 1)
+	globals.set_int(ChangeModel, hash)
 	sleep(0.01)
-	globals.set_int(2671444+59, 0)
+	globals.set_int(ChangeModelTrigger, 0)
 end
