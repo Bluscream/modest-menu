@@ -1,8 +1,4 @@
-local enums = require ("lib/init")
-
-local Global = {
-    Snow = 262145 + 4723
-}
+require("init")
 
 local function ToggleSnow()
 	if globals.get_boolean(Global.Snow) then
@@ -39,16 +35,25 @@ end)
 menu.add_action("Become Imanni", function()
 	globals.set_int(2671444+59, 1)
 	globals.set_int(2671444+46, 1987160310) -- hash ped
-	sleep(0.04) -- it is better if this can be adjustable by another menu option
+	sleep(0.04) -- it is better if this ca5n be adjustable by another menu option
 	globals.set_int(2671444+59, 0)
 end)
+-- menu.add_int_range("Skin Number:", 1, 1, get_keys(#PedHash), function() end, function(v)-- lua tables start at 1, and you can get the length of PedModel with #PedModel
+-- 	sethash(PedHash[v]) 
+-- end)
 
-local function sethash(hash)
-	globals.set_int(2671444+59, 1)
-	globals.set_int(2671444+46, hash)
-	sleep(0.01)
-	globals.set_int(2671444+59, 0)
+-- menu:add_enum_range(menu, enum, title, sort, action_callback)
+print("1")
+local PedName = table_invert(PedHash)
+local function get_current_ped()
+	local hash = PedName[localplayer:get_model_hash()]
+	print("get_current_ped hash: "..tostring(hash))
+	return hash
 end
-menu.add_int_range("Skin Number:", 1, 1, #PedHashes, function() end, function(value)-- lua tables start at 1, and you can get the length of PedModel with #PedModel
-	sethash(PedHashes[value][2]) 
-end)
+local function set_current_ped(hash)
+	print(tostring(hash))
+	player:set_ped_model(hash)
+end
+print("2")
+menu_add_enum_range(PedHash, "Ped Model", false, set_current_ped, get_current_ped)
+print("3")

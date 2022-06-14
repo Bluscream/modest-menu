@@ -792,7 +792,7 @@ PedHex = {
    u_m_y_zombie_01 = 0xAC4B4506,
 }
 
-PedHashes = {
+PedHash = {
     Abigail = 1074457665,
     AbigailCutscene = -1988720319,
     Abner = -257153498,

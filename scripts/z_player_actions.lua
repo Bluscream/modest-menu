@@ -173,7 +173,10 @@ local function TeleportToPlayer(ply, seconds)
 	if not ply or ply == nil then return end 
 	local pos = ply:get_position()
 	if seconds then
-		if localplayer:is_in_vehicle() then return end
+		if localplayer:is_in_vehicle() then
+			print("can not teleport while in vehicle")
+			return
+		end
  
 		local oldpos = localplayer:get_position()
 		localplayer:set_position(pos)
@@ -346,7 +349,6 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 		else
 			text = text.." | 🚗"
 		end
-	end
 	else 
 		text = text.." | 🚶"
 	end
@@ -442,7 +444,7 @@ local function BuildListOld()
 			i = i + 1
 		end
 	end
-	 
+	if i == nil then return end
 	for c = 1, i do
 		local smallest = {nil, nil}
 		for plyd = 1, #PlayersDistances do

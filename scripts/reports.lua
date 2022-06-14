@@ -1,0 +1,23 @@
+local rep = menu.add_submenu('Reports Stats')
+
+local function add_stat_item(title, stat)
+    stat = stats.get_int(stat)
+    if stat == nil then return end
+    rep:add_bare_item("", function() return title.."|".. (string.format("%03d", stat)) end, function() end, function()end, function() return end)
+end
+add_stat_item("Griefing", 'MPPLY_GRIEFING')
+add_stat_item("Exploits", 'MPPLY_EXPLOITS')
+add_stat_item("Bug Exploits", 'MPPLY_GAME_EXPLOITS')
+add_stat_item("Text Chat:Annoying Me", 'MPPLY_VC_ANNOYING_ME')
+add_stat_item("Text Chat:Using Hate Speech", 'MPPLY_TC_HATE')
+add_stat_item("Voice Chat:Annoying Me", 'MPPLY_VC_ANNOYINGME')
+add_stat_item("Voice Chat:Using Hate Speech", 'MPPLY_VC_HATE')
+add_stat_item("Offensive Language", 'MPPLY_OFFENSIVE_LANGUAGE')
+add_stat_item("Offensive Tagplate", 'MPPLY_OFFENSIVE_TAGPLATE')
+add_stat_item("Offensive Content", 'MPPLY_OFFENSIVE_UGC')
+add_stat_item("Bad Crew Name", 'MPPLY_BAD_CREW_NAME')
+add_stat_item("Bad Crew Motto", 'MPPLY_BAD_CREW_MOTTO')
+add_stat_item("Bad Crew Status", 'MPPLY_BAD_CREW_STATUS')
+add_stat_item("Bad Crew Emblem", 'MPPLY_BAD_CREW_ELBLEM')
+add_stat_item("Friendly", 'MPPLY_FRIENDLY')
+add_stat_item("Helpful", 'MPPLY_HELPFUL')
