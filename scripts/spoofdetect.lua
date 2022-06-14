@@ -1,3 +1,4 @@
+-- Made by zFutox
 spoofdetect = menu.add_submenu("Detect Spoof")
  
 function round(val, decimal)
@@ -110,8 +111,8 @@ spoofdetect:add_action("Check for Spoof (console)", function()
 				if ismodder > 0 then
 					modders = modders + 1
 					if extraresults then
-						resultlistnameders] = player.get_player_name(i)
-						resultlistdetsders] = ismodder
+						resultlistname[modders] = player.get_player_name(i)
+						resultlistdets[modders] = ismodder
 					else
 						print("-------------------------------------")
 						print("[*] Spoof detected: " .. player.get_player_name(i) .. " (" .. ismodder .. " detections)")

@@ -1,3 +1,5 @@
+-- Made by zFutox
+
 PLAYERID = localplayer:get_player_id()
 local spoofsub = menu.add_submenu("Spoof")
 function round(val, decimal)
