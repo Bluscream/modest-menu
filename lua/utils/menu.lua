@@ -38,7 +38,7 @@ function menu_add_enum_range(enum, title, sort, action_callback, default_key_cal
     if _menu then _menu:add_bare_item(title, set_title, function() action_callback(curval()) end, previous_item, next_item)
     else menu.add_bare_item(title, set_title, function() action_callback(curval()) end, previous_item, next_item) end
 end
-local function menu_centered_text(str)
+function menu_centered_text(str)
     local len = 30 - math.floor(string.len(str) / 2 + 0.5)
     local text = ""
     for i = 0, len do

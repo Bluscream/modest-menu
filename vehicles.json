@@ -2055,7 +2055,7 @@
     {
       "DashboardColorIndex": 0,
       "DriftTyres": false,
-      "EnvEffScale": 1.000000,
+      "EnvEffScale": -1.000000,
       "Flags": {
         "BulletproofTyres": true,
         "CustomPrimaryColor": false,

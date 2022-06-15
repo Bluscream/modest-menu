@@ -25,17 +25,17 @@ end
 
 
 
-local function weapon_spawn(weapon)
+function weapon_spawn(weapon)
 	local mypos = localplayer:get_position()
 	
 	--CODE TO CREATE AN AMBIENT PICKUP--
 	
-	globals.set_uint(2783335, 1)
-	globals.set_int(2783329 + 1, 1337) -- 1337 is the amount of money just to identify the pickup later
-	globals.set_float(2783329 + 3, mypos.x + 0)
-	globals.set_float(2783329 + 4, mypos.y + 0)
-	globals.set_float(2783329 + 5, mypos.z + 5)
-	globals.set_uint(4528329 + 1 + (globals.get_int(2783329) * 85) + 66 + 2, 2)
+	globals.set_uint(2783351, 1)
+	globals.set_int(2783345  + 1, 1337) -- 1337 is the amount of money just to identify the pickup later
+	globals.set_float(2783345  + 3, mypos.x + 0)
+	globals.set_float(2783345  + 4, mypos.y + 0)
+	globals.set_float(2783345  + 5, mypos.z + 5)
+	globals.set_uint(4528329 + 1 + (globals.get_int(2783345) * 85) + 66 + 2, 2)
 	
 	--Source: https://gitlab.com/ExternalMemoryakaLolBobTest/external-menu-gta-5-csgo/-/blob/master/GTA%205%20C++/Hack.cpp
 	

@@ -314,7 +314,7 @@ local function BuildListOld()
 		local ply = player.get_player_ped(i)
 		if ply then players[i] = {ply, player.get_player_name(i)} end
 	end
-	-- players = table.sort(players, function(a,b) return a[2] < b[2] end)
+	-- table.sort(players, function(a,b) return a[2] < b[2] end)
 	-- print(table_dump(players))
 	for id, player in pairs(players) do
 		add_player_option(playerlist, id, player[1], player[2])

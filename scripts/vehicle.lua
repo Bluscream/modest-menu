@@ -94,6 +94,7 @@ vehmenu:add_toggle("Auto Vehicle Unlock", function() return autoVehicleUnLock en
 -- vehmenu:add_toggle("Auto Vehicle Siren", function() return autoSiren end, function(v) autoSiren = v end)
 
 local function get_current_plate()
+	if not not localplayer or not localplayer:get_current_vehicle() or not localplayer:get_current_vehicle():get_number_plate_index() then return nil end
 	local hash = VehicleLicensePlateColorName[localplayer:get_current_vehicle():get_number_plate_index()]
 	return hash
 end
@@ -103,3 +104,7 @@ local function set_current_plate(hash)
 	localplayer:get_current_vehicle():set_number_plate_index(hash)
 end
 menu_add_enum_range(VehicleLicensePlateColor, "License Plate", false, set_current_plate, get_current_plate, vehmenu)
+
+vehmenu:add_action("Spawn Vehicle",function() 
+	vehicle_spawn(joaat("ambulance"), true) --the false value, is to not apply any extra options to the vehicle, just spawn it.
+end)

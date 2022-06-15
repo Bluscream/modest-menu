@@ -45,12 +45,8 @@ local function set_current_ped(hash)
 end
 menu_add_enum_range(PedHash, "Ped Model", false, set_current_ped, get_current_ped)
 
--- menu.add_action("Spawn Vehicle",function() 
--- 	vehicle_spawn(joaat("ambulance"), false) --the false value, is to not apply any extra options to the vehicle, just spawn it.
--- end)
-
--- menu.add_action("Get Weapons",function()
--- 	for i=1, #WeaponPickups do
--- 		weapon_spawn(WeaponPickups[i])
--- 	end
--- end)
+menu.add_action("Get Weapons",function()
+	for i=1, #WeaponPickups do
+		weapon_spawn(WeaponPickups[i])
+	end
+end)
