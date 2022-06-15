@@ -90,4 +90,5 @@ vehmenu:add_toggle("Auto Vehicle Godmode", function() return autoVehicleGodMode 
 vehmenu:add_toggle("Auto Vehicle Repair", function() return autoRepairVehicle end, function(v) autoRepairVehicle = v end)
 vehmenu:add_toggle("Auto Vehicle License Plate", function() return autoVehicleLicensePlate end, function(v) autoVehicleLicensePlate = v end)
 vehmenu:add_toggle("Auto Vehicle Lock", function() return autoVehicleLock end, function(v) autoVehicleLock = v end)
+vehmenu:add_toggle("Auto Vehicle Unlock", function() return autoVehicleUnLock end, function(v) autoVehicleUnLock = v end)
 -- vehmenu:add_toggle("Auto Vehicle Siren", function() return autoSiren end, function(v) autoSiren = v end)

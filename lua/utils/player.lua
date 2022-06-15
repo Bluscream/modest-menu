@@ -35,9 +35,9 @@ function player_set_ped_model(hash)
 	sleep(0.01)
 	globals.set_int(ChangeModelTrigger, 0)
 end
-function player_get_position(floor)
-	local pos = localplayer:get_position()
-	local head = localplayer:get_rotation()
+function player_get_position(player, floor)
+	local pos = player:get_position()
+	local head = player:get_rotation()
 	if floor then
 		pos.x = math.floor(pos.x)
 		pos.y = math.floor(pos.y)
@@ -48,11 +48,11 @@ function player_get_position(floor)
 	end
 	return pos.x,pos.y,pos.z,head.x,head.y,head.z
 end
-function player_position_string()
-	local x,y,z,hx,hy,hz = player_get_position(true)
+function player_position_string(player)
+	local x,y,z,hx,hy,hz = player_get_position(player, true)
 	return "X: "..x.." Y: "..y.." Z: "..z
 end
-function player_rotation_string()
-	local x,y,z,hx,hy,hz = player_get_position(true)
+function player_rotation_string(player)
+	local x,y,z,hx,hy,hz = player_get_position(player, true)
 	return "X: "..hx.." Y: "..hy.." Z: "..hz
 end

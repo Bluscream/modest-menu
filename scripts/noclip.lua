@@ -3,7 +3,7 @@ local enable = false
 local speed = 2
  
 local function up()
-	if not enable then return end
+	if not enable or not speed then return end
 	local newpos = localplayer:get_position() + vector3(0,0,speed)
  
 	if not localplayer:is_in_vehicle() then
@@ -15,7 +15,7 @@ local function up()
 end
  
 local function down()
-	if not enable then return end
+	if not enable or not speed then return end
 	local newpos = localplayer:get_position() + vector3(0,0,speed * -1)
  
 	if not localplayer:is_in_vehicle() then
@@ -27,7 +27,7 @@ local function down()
 end
  
 local function forward()
-	if not enable then return end
+	if not enable or not speed then return end
 	local dir = localplayer:get_heading()
 	local newpos = localplayer:get_position() + (dir * speed)
  
@@ -40,7 +40,7 @@ local function forward()
 end
  
 local function backward()
-	if not enable then return end
+	if not enable or not speed then return end
 	local dir = localplayer:get_heading()
 	local newpos = localplayer:get_position() + (dir * speed * -1)
  
