@@ -2,7 +2,7 @@ function menu_add_global_toggle(var, title)
     log("utils/menu > menu_add_global_toggle: " .. dump(var) .. " | " .. dump(title))
     menu.add_toggle(title, function() return globals.get_boolean(var) end, function(var) global_toggle(var) end)
 end
-function menu_add_enum_range(enum, title, sort, action_callback, default_key_callback)
+function menu_add_enum_range(enum, title, sort, action_callback, default_key_callback, _menu)
     log("utils/menu > menu_add_enum_range: " .. tostring(enum) .. " | " .. dump(title) .. " | " .. dump(sort) .. " | " .. dump(action_callback) .. " | " .. dump(default_key_callback))
     local enum_keys = table_get_keys(enum)
     local enum_keys_len = table_count(enum_keys)
@@ -35,7 +35,8 @@ function menu_add_enum_range(enum, title, sort, action_callback, default_key_cal
         i = santize_index(table_index_of(enum_keys, curkey())-1)
         return set_title()
     end
-    menu.add_bare_item(title, set_title, function() action_callback(curval()) end, previous_item, next_item)
+    if _menu then _menu:add_bare_item(title, set_title, function() action_callback(curval()) end, previous_item, next_item)
+    else menu.add_bare_item(title, set_title, function() action_callback(curval()) end, previous_item, next_item) end
 end
 local function menu_centered_text(str)
     local len = 30 - math.floor(string.len(str) / 2 + 0.5)

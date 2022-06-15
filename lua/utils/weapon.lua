@@ -22,3 +22,33 @@ function weapon_get_string(gun)
 	if infos.ammo then str = str .. " ["..dump(infos.ammo).."/"..dump(infos.max_ammo)"]" end
 	return str
 end
+
+
+
+local function weapon_spawn(weapon)
+	local mypos = localplayer:get_position()
+	
+	--CODE TO CREATE AN AMBIENT PICKUP--
+	
+	globals.set_uint(2783335, 1)
+	globals.set_int(2783329 + 1, 1337) -- 1337 is the amount of money just to identify the pickup later
+	globals.set_float(2783329 + 3, mypos.x + 0)
+	globals.set_float(2783329 + 4, mypos.y + 0)
+	globals.set_float(2783329 + 5, mypos.z + 5)
+	globals.set_uint(4528329 + 1 + (globals.get_int(2783329) * 85) + 66 + 2, 2)
+	
+	--Source: https://gitlab.com/ExternalMemoryakaLolBobTest/external-menu-gta-5-csgo/-/blob/master/GTA%205%20C++/Hack.cpp
+	
+	--END OF CODE TO CREATE AN AMBIENT PICKUP--
+	
+	sleep(0.30) -- We wait for pickup to be created
+	
+	local mypos = localplayer:get_position()
+	for p in replayinterface.get_pickups() do
+		if p:get_amount() == 1337 then
+			p:set_amount(2000)
+			p:set_pickup_hash(weapon)
+			break
+		end
+	end
+end

@@ -10,6 +10,7 @@ local units_value = {3.6, 1, 2.2369362921, 3.280839895}
 local numberplate_enabled = false
 local numberplate_key = {KeyCode.W, KeyCode.S}-- W, A, S, D
 local numberplate_ref = {}
+local oldplate = ""
  
 local function round(value, dec)
 	dec = dec or 0
@@ -21,25 +22,29 @@ local function get_vehicle_speed(veh)
 	local velocity = veh:get_velocity()
 	return math.sqrt(velocity.x ^ 2 + velocity.y ^ 2 + velocity.z ^ 2)
 end
- 
+
 speedometer_submenu:add_toggle("Speedometer Numberplates", function()
 	return numberplate_enabled
 end, function(value)
 	numberplate_enabled = value
 	if value then
+		oldplate = localplayer:get_current_vehicle():get_number_plate_text()	
 		for i = 1, #numberplate_key do
 			numberplate_ref[i] = menu.register_hotkey(numberplate_key[i], function()
 				if not localplayer:is_in_vehicle() then return end
 				local veh = localplayer:get_current_vehicle()
 				if not veh then return end
 				local speed = round(get_vehicle_speed(veh) * units_value[units_selection], 0)
+				-- veh:set_number_plate_index(math.random(-1, 16))
 				veh:set_number_plate_text((speed < 10 and "   " or speed < 100 and "  " or speed < 1000 and " " or "") .. speed .. " " .. units_text_numberplate[units_selection])
+				sleep(.1)
 			end)
 		end
 	else
 		for i = 1, #numberplate_ref do
 			menu.remove_hotkey(numberplate_ref[i])
 		end
+		localplayer:get_current_vehicle():set_number_plate_text(oldplate)
 	end
 end)
  

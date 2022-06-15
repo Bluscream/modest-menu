@@ -92,3 +92,14 @@ vehmenu:add_toggle("Auto Vehicle License Plate", function() return autoVehicleLi
 vehmenu:add_toggle("Auto Vehicle Lock", function() return autoVehicleLock end, function(v) autoVehicleLock = v end)
 vehmenu:add_toggle("Auto Vehicle Unlock", function() return autoVehicleUnLock end, function(v) autoVehicleUnLock = v end)
 -- vehmenu:add_toggle("Auto Vehicle Siren", function() return autoSiren end, function(v) autoSiren = v end)
+
+local function get_current_plate()
+	local hash = VehicleLicensePlateColorName[localplayer:get_current_vehicle():get_number_plate_index()]
+	return hash
+end
+local function set_current_plate(hash)
+	print(tostring(hash))
+	if hash == nil then return end
+	localplayer:get_current_vehicle():set_number_plate_index(hash)
+end
+menu_add_enum_range(VehicleLicensePlateColor, "License Plate", false, set_current_plate, get_current_plate, vehmenu)

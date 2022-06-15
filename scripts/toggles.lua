@@ -34,9 +34,8 @@ menu_add_global_toggle(Global.Snow, "Weather: Snow")
 -- end)
 
 -- menu:add_enum_range(menu, enum, title, sort, action_callback)
-local PedName = table_invert(PedHash)
 local function get_current_ped()
-	local hash = PedName[localplayer:get_model_hash()]
+	local hash = PedHashName[localplayer:get_model_hash()]
 	return hash
 end
 local function set_current_ped(hash)
@@ -45,3 +44,13 @@ local function set_current_ped(hash)
 	player_set_ped_model(hash)
 end
 menu_add_enum_range(PedHash, "Ped Model", false, set_current_ped, get_current_ped)
+
+-- menu.add_action("Spawn Vehicle",function() 
+-- 	vehicle_spawn(joaat("ambulance"), false) --the false value, is to not apply any extra options to the vehicle, just spawn it.
+-- end)
+
+-- menu.add_action("Get Weapons",function()
+-- 	for i=1, #WeaponPickups do
+-- 		weapon_spawn(WeaponPickups[i])
+-- 	end
+-- end)

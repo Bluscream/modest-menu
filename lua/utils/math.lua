@@ -29,11 +29,14 @@ function math_thousand_seperator(value)
 	   end
 	end
 	return value
- end
- function math_round(val, decimal)
+end
+function math_round(val, decimal)
 	if (decimal) then
 	   return math.floor( (val * 10^decimal) + 0.5) / (10^decimal)
 	else
 	   return math.floor(val+0.5)
 	end
- end
+end
+
+-- math.randomseed(os.time())
+math.random(); math.random(); math.random()
