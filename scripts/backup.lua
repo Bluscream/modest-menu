@@ -7,7 +7,8 @@ local function Trigger() menu.call_heli_backup() end
 
 local function Toggle()
     if events == nil then
-        for k, v in pairs(#Event) do
+        events = {}
+        for k, v in pairs(Event) do
             table.insert(events, menu.register_callback(v, Trigger))
         end
         Trigger()
@@ -18,6 +19,7 @@ local function Toggle()
         events = nil
     end
     if keys == nil then
+        keys = {}
         for k, v in pairs({ KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.VK_ESCAPE }) do
             table.insert(keys, menu.register_hotkey(v, Trigger))
         end
@@ -30,4 +32,4 @@ local function Toggle()
     end
 end
 
-menu.add_toggle("Permanent Backup", function() return events == nil and keys == nil end, Toggle)
+menu.add_toggle("Permanent Backup", function() return events ~= nil and keys ~= nil end, Toggle)

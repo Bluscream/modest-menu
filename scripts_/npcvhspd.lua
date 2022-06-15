@@ -1,6 +1,7 @@
+require("init")
 local function SetMaxSpeed(vehicle, SpeedInt)
     vehicle:set_max_speed(SpeedInt)
-    print('Setting max speed of '..SpeedInt..' for Vehicle ID ' .. vehicle)
+    print('Setting max speed of '..SpeedInt..' for Vehicle ID ' .. vehicle_get_string(vehicle_get_infos(vehicle)))
 end
 
 -- Overrides

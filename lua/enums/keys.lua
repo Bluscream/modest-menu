@@ -1,3 +1,5 @@
+require ("utils/table")
+
 KeyCode = {
     VK_LBUTTON = 1, -- Left mouse button
     VK_RBUTTON = 2, -- Right mouse button
@@ -173,3 +175,4 @@ KeyCode = {
     VK_PA1 = 253, -- PA1 key
     VK_OEM_CLEAR = 254 -- Clear key
 }
+KeyCodeName = table_invert(KeyCode)

@@ -1,7 +1,7 @@
 -- Made by AppleVegas
 print("=== z_player_actions START ===")
 require("init")
-local VehicleName = table_invert(VehicleHash)
+local VehicleHashName = table_invert(VehicleHash)
 
 local Tsk=1					--On Admin Detection; 1-DoARoundabout, 2-JoinPublic, 3-EmptySession
 local ChSs=nil				--ChangeSession Hotkey, nil to disable
@@ -209,7 +209,7 @@ local function f_p_o(ply_id, ply, ply_name) -- Format Player Option Text
 		if veh ~= nil then
 			local veh_hash = veh:get_model_hash()
 			if veh_hash ~= nil then
-				local veh_name = VehicleName[veh_hash]
+				local veh_name = VehicleHashName[veh_hash]
 				if veh_name ~= nil then
 					text = text.." | "..veh_name
 				else

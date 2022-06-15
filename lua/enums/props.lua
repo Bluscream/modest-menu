@@ -1,3 +1,5 @@
+require ("utils/table")
+
 Prop = {
     "basic_style_set",
     "bong_and_wine",

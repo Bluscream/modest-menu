@@ -1,12 +1,14 @@
+require("init")
+
 local speedometer_submenu = menu.add_submenu("Speedometer")
  
-local units_selection = 1
+local units_selection = 3
 local units_text = {"kilometres per hour", "metres per second", "miles per hour", "feet per second"}
 local units_text_short = {"km/h", "m/s", "mi/h", "ft/s"}
 local units_text_numberplate = {"kmh", "mps", "mph", "fps"}
 local units_value = {3.6, 1, 2.2369362921, 3.280839895}
 local numberplate_enabled = false
-local numberplate_key = {87, 65, 83, 68}-- W, A, S, D
+local numberplate_key = {KeyCode.W, KeyCode.S}-- W, A, S, D
 local numberplate_ref = {}
  
 local function round(value, dec)

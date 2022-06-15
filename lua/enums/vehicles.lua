@@ -12,6 +12,7 @@ VehicleConfigFlag = {
     ExitingVehicle = 256,
     PlayerDead = 512
 }
+VehicleConfigFlagName = table_invert(VehicleConfigFlag)
 
 VehicleLicensePlateColor = {
     BlueWhite = 0,
@@ -21,6 +22,7 @@ VehicleLicensePlateColor = {
     BlueWhite3 = 4,
     Yankton = 5
 }
+VehicleLicensePlateColorName = table_invert(VehicleLicensePlateColor)
 
 VehicleDoorLockState = {
     None = 0,
@@ -32,6 +34,7 @@ VehicleDoorLockState = {
     CanBeBrokenIntoPersist = 8, -- Can be broken into persist
     CannotBeTriedToEnter = 10, -- Cannot be tried to enter (Nothing happens when you press the vehicle enter key).
 }
+VehicleDoorLockStateName = table_invert(VehicleDoorLockState)
 
 VehicleHash = {
     adder = 3078201489,
@@ -775,4 +778,4 @@ VehicleHash = {
     zr380 = 540101442,
     ztype = 758895617
 }
-VehicleName = table_invert(VehicleHash)
+VehicleHashName = table_invert(VehicleHash)

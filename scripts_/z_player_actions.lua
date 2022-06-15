@@ -745,7 +745,7 @@ local firstVeh = true
 local firstPly = true
 local firstWpn = true
  
-local vehicleName = ""
+local VehicleHashName = ""
 local vehicleClass = "" 
  
 -- Function definitions
@@ -926,7 +926,7 @@ end
 local function getCurrentVeh(hash)
 	for i=2, #vehicleList do
 		if vehicleList[i] == hash then
-			vehicleName = vehicleList[i-1]
+			VehicleHashName = vehicleList[i-1]
 			vehicleClass = vehicleList[i+1]
 		end
 		i = i+2
@@ -982,12 +982,12 @@ local function PlayerInfo(ply, plyName)
 		Text("--Player is in a Vehicle")
  
 		if playerVehInfo then
-			if vehicleName == ""  then
+			if VehicleHashName == ""  then
 				Text("-"..ply:get_current_vehicle():get_model_hash())
 			else
-				Text("-"..vehicleName)
+				Text("-"..VehicleHashName)
 				Text("-"..vehicleClass)
-				vehicleName = ""
+				VehicleHashName = ""
 				vehicleClass = ""
 			end
 		end
@@ -1056,7 +1056,7 @@ local function add_player_option(ply_id, ply, ply_name)
 		else
 			text = text.."I �� "
 		end
-		vehicleName = ""
+		VehicleHashName = ""
 		vehicleClass = ""
 	else
 		text=text.."I  �� "

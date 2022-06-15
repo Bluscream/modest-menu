@@ -1,3 +1,5 @@
+require ("utils/table")
+
 Global = {
     UniqueCargo = 1683827, -- bool
     Snow = 266869, -- bool
@@ -8,3 +10,4 @@ Global = {
     ChangeModelTrigger = 2671444+59, -- bool
     ChangeModel = 2671444+46 -- hash
 }
+GlobalName = table_invert(Global)

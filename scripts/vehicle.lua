@@ -4,14 +4,22 @@ local autoVehicleGodMode = true
 local autoRepairVehicle = false
 local autoVehicleLicensePlate = true
 local autoVehicleLock = false
+local autoVehicleUnLock = true
 local autoSiren = false
 
-
+local function UnlockOwnDoor()
+	if autoVehicleUnLock and localplayer ~= nil then
+		if localplayer.get_current_vehicle then
+			local veh = localplayer:get_current_vehicle()
+			if veh ~= nil then
+				veh:set_door_lock_state(VehicleDoorLockState.Unlocked)
+			end
+		end
+	end
+end
 
 local function OnVehicleChanged(oldVehicle, newVehicle)
-	local oldHash, oldName, oldLicensePlate, oldGodmode, oldLocked = vehicle_get_infos(oldVehicle)
-	local newHash, newName, newLicensePlate, newGodmode, newLocked = vehicle_get_infos(newVehicle)
-	log("OnVehicleChanged: " .. vehicle_get_string(oldVehicle, oldHash, oldName, oldLicensePlate, oldGodmode, oldLocked) .. " | " .. vehicle_get_string(newVehicle, newHash, newName, newLicensePlate, newGodmode, newLocked))
+	local infos = vehicle_get_infos(newVehicle)
 	if newVehicle ~= nil then
 		if autoRepairVehicle == true and newVehicle:get_health() < 1000 then
 			newVehicle:set_health(1000)
@@ -28,12 +36,15 @@ local function OnVehicleChanged(oldVehicle, newVehicle)
 			newVehicle:set_window_tint(1)
 		end
 		if autoVehicleLicensePlate == true then
-			newVehicleHash = newVehicle:get_model_hash()
-			newVehicle:set_number_plate_index(VehicleLicensePlateColor.YellowBlack)
-			if newVehicleHash == 0x586765fb then -- Deluxo
-				newVehicle:set_number_plate_text('outatime')
-			elseif string.startsWith(VehicleName[newVehicleHash], "police") then
-				newVehicle:set_number_plate_text('LSPD:FR')
+			newVehicle:set_number_plate_index(2)
+			if infos["hash"] then
+				if infos["hash"] == 0x586765fb then -- Deluxo
+					newVehicle:set_number_plate_text('outatime')
+				elseif string.startsWith(VehicleHashName[infos["hash"]], "police") then
+					newVehicle:set_number_plate_text('LSPD:FR')
+				else
+					newVehicle:set_number_plate_text('x blu x')
+				end
 			else
 				newVehicle:set_number_plate_text('x blu x')
 			end
@@ -45,23 +56,13 @@ local function OnVehicleChanged(oldVehicle, newVehicle)
 		if autoVehicleLock == true then
 			newVehicle:set_door_lock_state(VehicleDoorLockState.CannotBeTriedToEnter)
 		end
+	else
+		UnlockOwnDoor()
 	end
 	if oldVehicle ~= nil then
-	-- if autoVehicleLock then
-		oldVehicle:set_door_lock_state(VehicleDoorLockState.Unlocked)
-	-- end
-	end
-end
-local function UnlockOwnDoor()
-	if localplayer ~= nil then
-		-- if localplayer:is_in_vehicle() then
-		local veh = localplayer:get_current_vehicle()
-		if veh ~= nil then
-			if veh:get_door_lock_state() ~= 1 then
-				veh:set_door_lock_state(VehicleDoorLockState.Unlocked)
-			end
+		if autoVehicleUnLock then
+			oldVehicle:set_door_lock_state(VehicleDoorLockState.Unlocked)
 		end
-		-- end
 	end
 end
 local function GetEngine()
@@ -82,11 +83,11 @@ end
 
 -- menu.register_hotkey(112, function() menu.enter_personal_vehicle() end)
 menu.register_hotkey(KeyCode.F, UnlockOwnDoor)
-menu.register_callback('OnVehicleChanged', OnVehicleChanged)
-menu.add_toggle("Engine Status", GetEngine, SetEngine)
-menu.add_toggle("Auto Vehicle Godmode", function() return autoVehicleGodMode end, function(v) autoVehicleGodMode = v end)
-menu.add_toggle("Auto Vehicle Repair", function() return autoRepairVehicle end, function(v) autoRepairVehicle = v end)
-menu.add_toggle("Auto Vehicle License Plate", function() return autoVehicleLicensePlate end, function(v) autoVehicleLicensePlate = v end)
-menu.add_toggle("Auto Vehicle Lock", function() return autoVehicleLock end, function(v) autoVehicleLock = v end)
--- menu.add_action("Lock all vehicles", function() for p in replayinterface.get_vehicles() do if p ~= nil then return p:set_door_lock_state(VehicleDoorLockState.CannotBeTriedToEnter) end end end)
--- menu.add_toggle("Auto Vehicle Siren", function() return autoSiren end, function(v) autoSiren = v end)
+menu.register_callback(Event.OnVehicleChanged, OnVehicleChanged)
+local vehmenu = menu.add_submenu("Vehicle Actions")
+vehmenu:add_toggle("Engine Status", GetEngine, SetEngine)
+vehmenu:add_toggle("Auto Vehicle Godmode", function() return autoVehicleGodMode end, function(v) autoVehicleGodMode = v end)
+vehmenu:add_toggle("Auto Vehicle Repair", function() return autoRepairVehicle end, function(v) autoRepairVehicle = v end)
+vehmenu:add_toggle("Auto Vehicle License Plate", function() return autoVehicleLicensePlate end, function(v) autoVehicleLicensePlate = v end)
+vehmenu:add_toggle("Auto Vehicle Lock", function() return autoVehicleLock end, function(v) autoVehicleLock = v end)
+-- vehmenu:add_toggle("Auto Vehicle Siren", function() return autoSiren end, function(v) autoSiren = v end)

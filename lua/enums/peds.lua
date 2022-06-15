@@ -1,3 +1,5 @@
+require ("utils/table")
+
 PedType = {
     Any = -1,
     Player = 1,
@@ -9,6 +11,7 @@ PedType = {
     Animal = 28,
     Army = 29
 }
+PedTypeName = table_invert(PedType)
 
 PedConfigFlag = {
     CanPunch = 18,
@@ -48,6 +51,7 @@ PedConfigFlag = {
     DisableStartingVehEngine = 429,
     FlamingFootprints = 421
 }
+PedConfigFlagName = table_invert(PedConfigFlag)
 
 -- Update 04/03/2020, Ped count [739]
 PedHex = {
@@ -791,6 +795,7 @@ PedHex = {
    u_m_y_tattoo_01 = 0x94AE2B8C,
    u_m_y_zombie_01 = 0xAC4B4506,
 }
+PedHexName = table_invert(PedHex)
 
 PedHash = {
     Abigail = 1074457665,
@@ -1498,3 +1503,4 @@ PedHash = {
     ZimborCutscene = -357782800,
     Zombie01 = -1404353274
 }
+PedHashName = table_invert(PedHash)

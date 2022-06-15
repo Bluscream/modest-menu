@@ -1,3 +1,5 @@
+require ("utils/table")
+
 RockstarStaff = {
     "AlpacaBarista",
     "AMoreno14",
